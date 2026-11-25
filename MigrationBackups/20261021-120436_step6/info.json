@@ -1,0 +1,18 @@
+{
+    "Id": "20261021-120436_step6",
+    "Label": "Recommended NetworkTransform settings",
+    "CreatedLocal": "2026-10-21 12:04:36",
+    "Step": 6,
+    "Scopes": [
+        "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Hittable Example.prefab",
+        "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Hitter Example.prefab",
+        "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Kinematic Example.prefab",
+        "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable NonKinematic Example.prefab",
+        "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Throw Example.prefab",
+        "Assets/#User/Community Modules/Prefabs/Networking/Networking Components Examples/Networked Teleport Object Example.prefab",
+        "Assets/#User/Community Modules/Scenes/Community Interactions.unity",
+        "Assets/Photon/Fusion/Resources/NetworkProjectConfig.fusion"
+    ],
+    "MissingScopes": [],
+    "Restored": false
+}

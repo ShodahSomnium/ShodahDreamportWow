@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="LoadingIcon" style="background-image: resource(&apos;UIToolkit_Images/Image_ExagonFullSolidPatern&apos;); width: 168px; height: 188px; -unity-background-image-tint-color: rgb(255, 255, 255); align-items: center; justify-content: center;">
+        <ui:VisualElement name="HexagonFull" style="height: 168px; width: 150px; position: absolute; background-image: url(&apos;project://database/Assets/SomniumSpace/Resources/UIToolkit_Images/Image_ExagonFull.png?fileID=2800000&amp;guid=58b4b7f04c763b2458361861d9cdf2f0&amp;type=3#Image_ExagonFull&apos;); display: none;" />
+        <ui:VisualElement name="Logo" style="background-image: url(&apos;project://database/Assets/SomniumSpace/Resources/UIToolkit_Images/Icon_Somnium3Logo.png?fileID=2800000&amp;guid=a5f9a41187484384d82ffd7f14f033ff&amp;type=3#Icon_Somnium3Logo&apos;); width: 62px; height: 74px; position: absolute;" />
+        <ui:VisualElement name="Hexagon" style="height: 168px; width: 150px; position: absolute; background-image: url(&apos;project://database/Assets/SomniumSpace/Resources/UIToolkit_Images/Image_LoadingExagon.png?fileID=2800000&amp;guid=2789ac06bd6d1d247be963e33528391c&amp;type=3#Image_LoadingExagon&apos;);" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,29 @@
+.unity-base-field__input {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+}
+
+.unity-scroller--vertical > .unity-scroller__slider > VisualElement > #unity-drag-container {
+    align-items: center;
+}
+
+.unity-scroller--vertical > .unity-scroller__slider > VisualElement > #unity-drag-container > #unity-dragger {
+    width: 2px;
+    border-radius: 1px;
+    border-width: 0;
+    background-color: rgb(0, 204, 255);
+}
+
+.unity-scroller--vertical > .unity-scroller__slider > VisualElement > #unity-drag-container > #unity-tracker {
+    width: 2px;
+    border-radius: 1px;
+    border-width: 0;
+    background-color: rgb(12, 33, 47);
+    margin: 0;
+    left: 5px;
+}
+
+.unity-scroller--vertical {
+    border-left-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}

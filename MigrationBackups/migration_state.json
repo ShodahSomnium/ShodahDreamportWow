@@ -1,0 +1,183 @@
+{
+    "FormatVersion": 1,
+    "ToolVersion": "1.0.0",
+    "StartedLocal": "2026-10-21 12:02:59",
+    "CurrentStep": 0,
+    "AdvancedMode": false,
+    "AdvancedPage": 0,
+    "OpenScenesBefore": [],
+    "Analysed": true,
+    "CmPresent": true,
+    "CmAsmdefPath": "",
+    "CmAsmdefName": "",
+    "CmRootNamespace": "",
+    "CmAsmdefJson": "",
+    "CmRoot": "Assets/#User/Community Modules",
+    "DetectedCmVersion": "v3.1",
+    "FusionVersionBefore": "2.0.12 Stable 1861",
+    "OtherAsmdefsReferencingCm": [],
+    "AnalysisWarnings": [
+        "Community Modules was found in Assets/#User/Community Modules but without its assembly definition: its scripts compile in Assembly-CSharp. Community Modules 4.0 brings its own assembly definition (CommunityModules). Your scripts inside the Community Modules folder become part of it: if they use scripts outside that folder, move them out after the update."
+    ],
+    "CleanupMode": "Smart",
+    "CleanupDone": true,
+    "Parked": [
+        {
+            "OriginalPath": "Assets/#User/SomniumWoW/Game/Access/WowIsolation.cs",
+            "ParkedPath": "MigrationBackups/Parked/Assets/#User/SomniumWoW/Game/Access/WowIsolation.cs",
+            "Retired": false
+        },
+        {
+            "OriginalPath": "Assets/#User/SomniumWoW/Networking/SceneNetworking.cs",
+            "ParkedPath": "MigrationBackups/Parked/Assets/#User/SomniumWoW/Networking/SceneNetworking.cs",
+            "Retired": false
+        },
+        {
+            "OriginalPath": "Assets/#User/SomniumWoW/Networking/WowNet.cs",
+            "ParkedPath": "MigrationBackups/Parked/Assets/#User/SomniumWoW/Networking/WowNet.cs",
+            "Retired": false
+        }
+    ],
+    "DeletedFiles": [
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridge.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData1.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData12.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData16.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData2.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData32.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData4.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData6.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData64.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeData8.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/NetworkBridgeEvents.cs",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/SomniumSpace.Network.asmdef",
+        "Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/Virtual/NetworkBridgeData.cs"
+    ],
+    "ModifiedOriginalAssets": [],
+    "KeepUsedRetiredScripts": false,
+    "RetiredUsages": [],
+    "UpdateFloatValues": true,
+    "RenameInCreatorScripts": true,
+    "CreatorScriptsToRename": [],
+    "OldFloatComponents": 0,
+    "FloatValuesUpdated": true,
+    "RenamesApplied": false,
+    "PhotonDeleted": true,
+    "PhotonSettingsKept": [
+        "Assets/Photon/Fusion/Resources/NetworkProjectConfig.fusion",
+        "Assets/Photon/Fusion/Resources/PhotonAppSettings.asset"
+    ],
+    "DefinesUpdated": true,
+    "DefinesBefore": [
+        "Standalone=FUSION_WEAVER;FUSION2;FUSION_2;FUSION_2_0;FUSION_2_0_12;FUSION_2_OR_NEWER;FUSION_2_0_OR_NEWER;FUSION_LOGLEVEL_INFO",
+        "Android=",
+        "WebGL=",
+        "PS4=",
+        "XboxOne=",
+        "tvOS=",
+        "Nintendo Switch=",
+        "LinuxHeadlessSimulation=",
+        "GameCoreScarlett=",
+        "GameCoreXboxOne=",
+        "PS5=",
+        "EmbeddedLinux=",
+        "QNX=",
+        "VisionOS=",
+        "Nintendo Switch 2=",
+        "Kepler=",
+        "Server="
+    ],
+    "PhotonImportRequested": true,
+    "PhotonImported": true,
+    "CmMovedToCanonical": false,
+    "CmOriginalRootBeforeMove": "",
+    "CmImportRequested": true,
+    "CmImported": true,
+    "CmSkipped": false,
+    "AsmdefReapplied": true,
+    "ParkedRestored": true,
+    "AsmdefReferencesFixed": true,
+    "KeepMyVersion": [],
+    "KeepFolder": "D:/Dreamport/WoW/World Of Warcraft/MigrationBackups/20261021-120340_step5/keep",
+    "MovedForImport": [],
+    "ConvertedComponents": 0,
+    "ProjectScanClean": true,
+    "NetworkTransformSettingsDone": true,
+    "UnattendedTask": "",
+    "UnattendedStartedUtc": "639281773793558571",
+    "UnattendedTimeoutMinutes": 90,
+    "UnattendedSdkPackage": "",
+    "UnattendedSdkImportRequested": false,
+    "UnattendedConversionDone": true,
+    "PendingAction": "",
+    "Backups": [
+        {
+            "Id": "20261021-120308_step2",
+            "Label": "Old Community Modules scripts",
+            "CreatedLocal": "2026-10-21 12:03:08",
+            "Step": 2,
+            "Scopes": [
+                "Assets/#User/Community Modules",
+                "Assets/#User/SomniumWoW/Game/Access/WowIsolation.cs",
+                "Assets/#User/SomniumWoW/Networking/SceneNetworking.cs",
+                "Assets/#User/SomniumWoW/Networking/WowNet.cs"
+            ],
+            "MissingScopes": [],
+            "Restored": false
+        },
+        {
+            "Id": "20261021-120313_step3",
+            "Label": "Old Photon",
+            "CreatedLocal": "2026-10-21 12:03:13",
+            "Step": 3,
+            "Scopes": [
+                "Assets/Photon/Fusion",
+                "Assets/Photon/PhotonLibs",
+                "Packages/manifest.json"
+            ],
+            "MissingScopes": [],
+            "Restored": false
+        },
+        {
+            "Id": "20261021-120322_step4",
+            "Label": "Before Photon 2.1 import",
+            "CreatedLocal": "2026-10-21 12:03:22",
+            "Step": 4,
+            "Scopes": [
+                "Assets/Photon"
+            ],
+            "MissingScopes": [],
+            "Restored": false
+        },
+        {
+            "Id": "20261021-120340_step5",
+            "Label": "Before Community Modules 4.0 import",
+            "CreatedLocal": "2026-10-21 12:03:40",
+            "Step": 5,
+            "Scopes": [
+                "Assets/#User/Community Modules"
+            ],
+            "MissingScopes": [],
+            "Restored": false
+        },
+        {
+            "Id": "20261021-120436_step6",
+            "Label": "Recommended NetworkTransform settings",
+            "CreatedLocal": "2026-10-21 12:04:36",
+            "Step": 6,
+            "Scopes": [
+                "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Hittable Example.prefab",
+                "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Hitter Example.prefab",
+                "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Kinematic Example.prefab",
+                "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable NonKinematic Example.prefab",
+                "Assets/#User/Community Modules/Prefabs/Networking/Networked Grabable Throw Example.prefab",
+                "Assets/#User/Community Modules/Prefabs/Networking/Networking Components Examples/Networked Teleport Object Example.prefab",
+                "Assets/#User/Community Modules/Scenes/Community Interactions.unity",
+                "Assets/Photon/Fusion/Resources/NetworkProjectConfig.fusion"
+            ],
+            "MissingScopes": [],
+            "Restored": false
+        }
+    ],
+    "LastCompileErrors": []
+}

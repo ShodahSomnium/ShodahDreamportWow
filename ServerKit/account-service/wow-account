@@ -1,0 +1,353 @@
+#!/usr/bin/env bash
+# =============================================================================================
+# Dreamport ServerKit - wow-account : manage the WoW accounts of your realm.
+# Installed by setup-accounts.sh as /usr/local/bin/wow-account. On your PC, double-click
+# "Manage WoW accounts.cmd" - it opens this menu on the server.
+#
+#   sudo wow-account                          the menu (easiest; also: sudo wow-account menu)
+#   sudo wow-account allow NICKNAME|ID        let a Somnium player get an automatic account
+#   sudo wow-account disallow NICKNAME|ID     take a player off the allow list (= allow --remove)
+#   sudo wow-account list                     accounts, allow list, GM list, unlocked accounts
+#   sudo wow-account unlock WHO               let WHO's account get a new key once (within 24 hours)
+#   sudo wow-account create [NAME]            account for a friend with a normal WoW 3.3.5a client;
+#                                             asks for the password twice (hidden). Without a terminal
+#                                             the password is read as one line from standard input.
+#   sudo wow-account gm WHO on|off            Game Master (level 3, all realms) or normal player
+#   sudo wow-account check                    is everything working? (service, database, firewall)
+#   sudo wow-account selftest                 offline self-test (prints the PLAN8 2.3 test vector)
+#   sudo wow-account --dry-run COMMAND ...    show what would happen; nothing is changed
+# WHO = an account name, a Somnium ID, or the Somnium nickname of a player who registered here.
+#
+# Passwords: `create` reads it without showing it and hands it to wow_accounts.py on standard input
+# (never on a command line, never in a file, never in a log). The service itself never sees any
+# password: the Dreamport sends only the one-way SRP6 values.
+# =============================================================================================
+set -uo pipefail
+
+PY_FILE=/opt/wow-accounts/wow_accounts.py
+SERVICE=wow-accounts
+PORT=8086
+HEALTH_BODY='{"status":"ok","service":"wow-accounts","version":1}'
+
+if [ "$(id -u)" != "0" ]; then
+    if command -v sudo >/dev/null 2>&1; then
+        exec sudo -- "$0" "$@"
+    fi
+    echo "Run this as root: sudo wow-account" >&2
+    exit 1
+fi
+
+PYOPTS=()
+DRY=0
+if [ "${1:-}" = "--dry-run" ]; then
+    DRY=1
+    PYOPTS=(--dry-run)
+    shift
+fi
+
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "python3 is missing on this server (sudo apt-get install python3)." >&2
+    exit 1
+fi
+if [ ! -f "$PY_FILE" ]; then
+    echo "$PY_FILE is missing - run setup-accounts.sh first (README, 'Automatic accounts')." >&2
+    exit 1
+fi
+
+py() { python3 -I "$PY_FILE" "${PYOPTS[@]}" "$@"; }
+
+# --- one action each ------------------------------------------------------------------------
+
+do_create() {  # do_create NAME   (asks for the password)
+    local name=$1 pw1="" pw2="" rc
+    if [ -t 0 ]; then
+        echo "The password: up to 16 characters (letters, digits or symbols, no spaces)."
+        echo "It is not shown while you type. Upper/lower case does not matter in WoW."
+        IFS= read -rs -p "Password: " pw1 || { echo; return 1; }
+        echo
+        IFS= read -rs -p "Same password again: " pw2 || { echo; return 1; }
+        echo
+        if [ "$pw1" != "$pw2" ]; then
+            pw1=""; pw2=""
+            echo "The two passwords are different - nothing was created. Try again."
+            return 1
+        fi
+        pw2=""
+    else
+        IFS= read -r pw1 || true
+    fi
+    if [ -z "$pw1" ]; then
+        echo "No password was typed - nothing was created."
+        return 1
+    fi
+    # printf is a bash builtin: the password goes into the pipe only, never onto a command line.
+    printf '%s\n' "$pw1" | py create "$name"
+    rc=$?
+    pw1=""
+    unset pw1 pw2
+    return $rc
+}
+
+do_testaccounts() {  # do_testaccounts COUNT PREFIX GM(on|off)   (asks for ONE password for all of them)
+    local count=$1 prefix=$2 gm=$3 pw1="" pw2="" rc
+    local opts=(--count "$count" --prefix "$prefix")
+    [ "$gm" = on ] && opts+=(--gm)
+    if [ -t 0 ]; then
+        echo "One password for all of them: up to 16 characters (letters, digits or symbols, no spaces)."
+        echo "It is not shown while you type. Upper/lower case does not matter in WoW."
+        IFS= read -rs -p "Password: " pw1 || { echo; return 1; }
+        echo
+        IFS= read -rs -p "Same password again: " pw2 || { echo; return 1; }
+        echo
+        if [ "$pw1" != "$pw2" ]; then
+            pw1=""; pw2=""
+            echo "The two passwords are different - nothing was created. Try again."
+            return 1
+        fi
+        pw2=""
+    else
+        IFS= read -r pw1 || true
+    fi
+    if [ -z "$pw1" ]; then
+        echo "No password was typed - nothing was created."
+        return 1
+    fi
+    # printf is a bash builtin: the password goes into the pipe only, never onto a command line.
+    printf '%s\n' "$pw1" | py testaccounts "${opts[@]}"
+    rc=$?
+    pw1=""
+    unset pw1 pw2
+    return $rc
+}
+
+do_check() {
+    local problems=0 body
+    echo "== Automatic WoW accounts - check =="
+    if command -v systemctl >/dev/null 2>&1 && systemctl is-active --quiet "$SERVICE"; then
+        echo "  service:   running ($SERVICE)"
+    else
+        echo "  PROBLEM:   the service $SERVICE is not running - see: sudo journalctl -u $SERVICE -n 30"
+        problems=$((problems + 1))
+    fi
+    body=$(curl -fsS -m 5 "http://127.0.0.1:$PORT/health" 2>/dev/null || true)
+    if [ "$body" = "$HEALTH_BODY" ]; then
+        echo "  port $PORT: answers on this server"
+    else
+        echo "  PROBLEM:   nothing answers on port $PORT on this server"
+        problems=$((problems + 1))
+    fi
+    if py dbcheck | sed 's/^/  /'; then :; else problems=$((problems + 1)); fi
+    if [ -f /etc/iptables/rules.v4 ] && grep -qE '^-A INPUT .*-j REJECT' /etc/iptables/rules.v4; then
+        if iptables -C INPUT -p tcp -m state --state NEW -m tcp --dport "$PORT" -j ACCEPT 2>/dev/null; then
+            echo "  firewall:  tcp $PORT allowed on this server (Oracle: the security list must allow it too)"
+        else
+            echo "  PROBLEM:   this server's firewall does not allow tcp $PORT - run setup-accounts.sh again"
+            problems=$((problems + 1))
+        fi
+    fi
+    if py --selftest >/dev/null 2>&1; then
+        echo "  self-test: ok"
+    else
+        echo "  PROBLEM:   the self-test failed - run: sudo wow-account selftest"
+        problems=$((problems + 1))
+    fi
+    if [ "$problems" -eq 0 ]; then echo "CHECK OK"; return 0; fi
+    echo "CHECK: $problems problem(s)"
+    return 1
+}
+
+do_list() {
+    local rc lines
+    py list
+    rc=$?
+    [ "$DRY" = 1 ] && return $rc
+    # Players the service turned away recently (its log has their Somnium ID - easiest way to allow one).
+    if command -v journalctl >/dev/null 2>&1; then
+        lines=$(journalctl -u "$SERVICE" -o cat --no-pager -n 3000 2>/dev/null \
+                | grep -E '^register ip=[^ ]+ id=[^ ]+ nick=".*" name=[^ ]+ -> not_allowed' \
+                | sed -E 's/^register ip=[^ ]+ id=([^ ]+) nick=(".*") name=[^ ]+ -> not_allowed.*$/\2  \1/' \
+                | sort -u | tail -8 || true)
+        if [ -n "$lines" ]; then
+            echo "Turned away recently (nickname, Somnium ID). To let one in: menu choice 1 with the Somnium ID"
+            echo "(or: sudo wow-account allow SOMNIUM-ID):"
+            printf '%s\n' "$lines" | sed 's/^/  /'
+        fi
+    fi
+    return $rc
+}
+
+usage() {
+    sed -n '/^#   sudo wow-account /,/^# WHO = /p' "$0" | sed 's/^# \{0,1\}//'
+}
+
+# --- the menu --------------------------------------------------------------------------------
+
+ask() {  # ask "Question: " -> REPLY (trimmed); returns 1 on end of input
+    local answer
+    IFS= read -r -p "$1" answer || { echo; return 1; }
+    answer="${answer#"${answer%%[![:space:]]*}"}"
+    answer="${answer%"${answer##*[![:space:]]}"}"
+    REPLY=$answer
+    return 0
+}
+
+pause_menu() {
+    echo
+    IFS= read -r -p "Press Enter to go back to the menu." _ || exit 0
+}
+
+menu() {
+    local choice who name state n
+    while true; do
+        echo
+        echo "=================================================================="
+        echo "  WoW accounts on this server"
+        [ "$DRY" = 1 ] && echo "  DRY RUN - nothing is changed, the database is not touched"
+        echo "=================================================================="
+        echo "  1  Let a Somnium player in"
+        echo "       (then they get their account by pressing 'Play online' in the Dreamport)"
+        echo "  2  Show the accounts and who is allowed"
+        echo "  3  Unlock a player's account"
+        echo "       (they play on a new computer, or their key was lost)"
+        echo "  4  Create an account for a friend with a normal WoW 3.3.5a client"
+        echo "  5  Game Master on or off"
+        echo "  6  Take a player off the allow list"
+        echo "  7  Check that everything works"
+        echo "  8  Make test accounts (TEST01, TEST02, ... - one password for all)"
+        echo "  0  Quit"
+        echo
+        ask "Type a number and press Enter: " || exit 0
+        choice=$REPLY
+        echo
+        case "$choice" in
+            1)
+                echo "Type the player's Somnium nickname exactly as Somnium shows it, or their Somnium ID"
+                echo "(looks like cf5c553c-61f8-43f4-a290-4985ca328eb4). Empty = back."
+                ask "Nickname or Somnium ID: " || exit 0
+                who=$REPLY
+                [ -n "$who" ] && py allow -- "$who"
+                pause_menu ;;
+            2)
+                do_list
+                pause_menu ;;
+            3)
+                echo "Type the player's account name, Somnium ID or Somnium nickname. Empty = back."
+                echo "After this, the player has 24 hours to press 'Play online' in the Dreamport once;"
+                echo "that makes a new key on their computer. Their characters stay."
+                ask "Player: " || exit 0
+                who=$REPLY
+                [ -n "$who" ] && py unlock -- "$who"
+                pause_menu ;;
+            4)
+                echo "Choose the account name your friend will log in with:"
+                echo "letters A-Z and digits 0-9, up to 17 characters. Empty = back."
+                ask "Account name: " || exit 0
+                name=$REPLY
+                [ -n "$name" ] && do_create "$name"
+                pause_menu ;;
+            5)
+                echo "Type the player's account name, Somnium ID or Somnium nickname. Empty = back."
+                ask "Player: " || exit 0
+                who=$REPLY
+                if [ -n "$who" ]; then
+                    echo "  1  make a Game Master"
+                    echo "  2  make a normal player"
+                    ask "1 or 2: " || exit 0
+                    case "$REPLY" in
+                        1) state=on ;;
+                        2) state=off ;;
+                        *) state="" ; echo "Nothing was changed." ;;
+                    esac
+                    [ -n "$state" ] && py gm -- "$who" "$state"
+                fi
+                pause_menu ;;
+            6)
+                echo "Type the nickname or Somnium ID to take off the allow list. Empty = back."
+                echo "(An account the player already has stays; they just cannot get a new one.)"
+                ask "Nickname or Somnium ID: " || exit 0
+                who=$REPLY
+                [ -n "$who" ] && py allow --remove -- "$who"
+                pause_menu ;;
+            7)
+                do_check
+                pause_menu ;;
+            8)
+                echo "How many test accounts? (1-50, Enter = 10)"
+                ask "How many: " || exit 0
+                n=${REPLY:-10}
+                if ! [[ "$n" =~ ^[0-9]+$ ]] || [ "$n" -lt 1 ] || [ "$n" -gt 50 ]; then
+                    echo "Please type a number from 1 to 50. Nothing was created."
+                    pause_menu
+                    continue
+                fi
+                echo "How should the names start? (letters and digits, Enter = TEST -> TEST01, TEST02, ...)"
+                ask "Name start: " || exit 0
+                name=${REPLY:-TEST}
+                echo "Should they be Game Masters? (GM commands, e.g. for testing mounts)"
+                ask "y = yes, Enter = no: " || exit 0
+                case "$REPLY" in y|Y|yes|YES) state=on ;; *) state=off ;; esac
+                do_testaccounts "$n" "$name" "$state"
+                pause_menu ;;
+            0|q|Q|quit|exit)
+                exit 0 ;;
+            "")
+                ;;
+            *)
+                echo "Please type one of the numbers 0-8." ;;
+        esac
+    done
+}
+
+# --- command line ------------------------------------------------------------------------------
+
+cmd=${1:-}
+[ $# -gt 0 ] && shift
+case "$cmd" in
+    "")
+        if [ -t 0 ]; then menu; else usage; exit 2; fi ;;
+    menu)
+        menu ;;
+    allow)
+        if [ "${1:-}" = "--remove" ]; then
+            [ $# -eq 2 ] || { echo "Usage: wow-account allow --remove NICKNAME|SOMNIUM-ID" >&2; exit 2; }
+            py allow --remove -- "$2"
+        else
+            [ $# -eq 1 ] || { echo "Usage: wow-account allow NICKNAME|SOMNIUM-ID" >&2; exit 2; }
+            py allow -- "$1"
+        fi ;;
+    disallow|remove)
+        [ $# -eq 1 ] || { echo "Usage: wow-account disallow NICKNAME|SOMNIUM-ID" >&2; exit 2; }
+        py allow --remove -- "$1" ;;
+    list)
+        do_list ;;
+    unlock)
+        [ $# -eq 1 ] || { echo "Usage: wow-account unlock NAME|SOMNIUM-ID|NICKNAME" >&2; exit 2; }
+        py unlock -- "$1" ;;
+    create)
+        name=${1:-}
+        if [ -z "$name" ]; then
+            [ -t 0 ] || { echo "Usage: wow-account create NAME   (password on standard input)" >&2; exit 2; }
+            ask "Account name (letters A-Z and digits 0-9, up to 17): " || exit 1
+            name=$REPLY
+        fi
+        [ -n "$name" ] || exit 1
+        do_create "$name" ;;
+    gm)
+        [ $# -eq 2 ] && { [ "$2" = on ] || [ "$2" = off ]; } || { echo "Usage: wow-account gm NAME|SOMNIUM-ID|NICKNAME on|off" >&2; exit 2; }
+        py gm -- "$1" "$2" ;;
+    testaccounts)
+        [ $# -ge 1 ] || { echo "Usage: wow-account testaccounts COUNT [NAME-START] [gm]   (password on standard input)" >&2; exit 2; }
+        do_testaccounts "$1" "${2:-TEST}" "$( [ "${3:-}" = gm ] && echo on || echo off )" ;;
+    check|status)
+        do_check ;;
+    selftest)
+        py --selftest ;;
+    dbcheck)
+        py dbcheck ;;
+    -h|--help|help)
+        usage ;;
+    *)
+        echo "Unknown command '$cmd'." >&2
+        usage >&2
+        exit 2 ;;
+esac

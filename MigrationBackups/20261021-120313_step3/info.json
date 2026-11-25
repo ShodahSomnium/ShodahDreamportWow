@@ -1,0 +1,13 @@
+{
+    "Id": "20261021-120313_step3",
+    "Label": "Old Photon",
+    "CreatedLocal": "2026-10-21 12:03:13",
+    "Step": 3,
+    "Scopes": [
+        "Assets/Photon/Fusion",
+        "Assets/Photon/PhotonLibs",
+        "Packages/manifest.json"
+    ],
+    "MissingScopes": [],
+    "Restored": false
+}

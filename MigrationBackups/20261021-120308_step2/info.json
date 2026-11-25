@@ -1,0 +1,14 @@
+{
+    "Id": "20261021-120308_step2",
+    "Label": "Old Community Modules scripts",
+    "CreatedLocal": "2026-10-21 12:03:08",
+    "Step": 2,
+    "Scopes": [
+        "Assets/#User/Community Modules",
+        "Assets/#User/SomniumWoW/Game/Access/WowIsolation.cs",
+        "Assets/#User/SomniumWoW/Networking/SceneNetworking.cs",
+        "Assets/#User/SomniumWoW/Networking/WowNet.cs"
+    ],
+    "MissingScopes": [],
+    "Restored": false
+}

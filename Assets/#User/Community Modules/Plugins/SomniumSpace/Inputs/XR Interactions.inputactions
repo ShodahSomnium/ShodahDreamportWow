@@ -1,0 +1,829 @@
+{
+    "version": 1,
+    "name": "XR Interactions",
+    "maps": [
+        {
+            "name": "Interactions",
+            "id": "e321c6d6-bc3c-4576-8718-14009064d613",
+            "actions": [
+                {
+                    "name": "R Joystick",
+                    "type": "Value",
+                    "id": "2d2d128e-c0e8-4926-8a78-cad0f4fd38b5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "L Joystick",
+                    "type": "Value",
+                    "id": "fd4a08e2-9973-4d88-a2c1-b0ad694b0e89",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "R Joystick Click",
+                    "type": "Button",
+                    "id": "e2e6f258-3be5-49dd-adca-61016518e891",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap(duration=0.4)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L Joystick Click",
+                    "type": "Button",
+                    "id": "92c01d14-79e4-4fa7-a20f-993d145ebd79",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap(duration=0.4)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R Action Button",
+                    "type": "Button",
+                    "id": "99e69caf-4505-4f2e-9660-132181924570",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L Action Button",
+                    "type": "Button",
+                    "id": "40796f6b-28ad-49d6-bdd1-67d09f190958",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R Secondarry Button",
+                    "type": "Button",
+                    "id": "a9bf14be-1142-4719-892f-d43cbc668142",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L Secondarry Button",
+                    "type": "Button",
+                    "id": "a29cafb5-04a0-4e79-b724-61aaf9c62ee8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R Trigger",
+                    "type": "Button",
+                    "id": "4738c9e8-da58-4569-b140-14846b126be3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L Trigger",
+                    "type": "Button",
+                    "id": "6ef78824-3461-4056-ab50-42c83952952c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R Grab",
+                    "type": "Button",
+                    "id": "610878dc-5891-4e9d-8f88-ae715b8a56cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L Grab",
+                    "type": "Button",
+                    "id": "2aa5d1cd-fd0a-41dd-ab3c-89efe6827d58",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "R Haptic",
+                    "type": "Value",
+                    "id": "ea0ea384-c9ea-4112-8a0c-1dbe676144f8",
+                    "expectedControlType": "Haptic",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "L Haptic",
+                    "type": "Value",
+                    "id": "c8aefc7e-4f48-415d-9d3f-95a3c96a924d",
+                    "expectedControlType": "Haptic",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "70b78685-f775-448a-a7fa-7b57a08824bf",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "R Secondarry Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0eccbcdb-4670-43b7-a54b-d71986cd7397",
+                    "path": "<ViveController>{RightHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";ViveScheme;HTC Vive",
+                    "action": "R Secondarry Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9bf10ced-9ab9-4d02-ad62-354238ca97a9",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "L Joystick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "39ff7c0e-07b7-4b9a-89eb-e0a79d6630ec",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Joystick",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "8f878bcf-9388-4e27-ae91-74359fb1a1a4",
+                    "path": "<ViveController>{LeftHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "L Joystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "ef1e54bc-feb8-487e-a2cd-41d254173a4f",
+                    "path": "<ViveController>{LeftHand}/trackpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "L Joystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7e49e56d-1c50-4b20-a8ec-f9e3ca475cfc",
+                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "R Joystick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "7436458e-4de4-4fed-ad37-6761dc647b51",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Joystick",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "2d522190-d7cb-488f-9094-8dbeb137634b",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "R Joystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "ce28c49d-faf4-40c7-980b-f3a4bf4b1bd7",
+                    "path": "<ViveController>{RightHand}/trackpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "R Joystick",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e53c24bd-1b3a-482e-b659-53fa96cfda82",
+                    "path": "<WMRSpatialController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63698511-dc4f-4a1d-a946-0eb8db2475bc",
+                    "path": "<HololensHand>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc753fa4-4c4a-4007-805a-51fccb72ea28",
+                    "path": "<XRSimulatedController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d52128cb-d6e2-4eaf-98fb-533f1e4377c6",
+                    "path": "<OculusTouchController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d06386f6-e9fb-4a7d-afb9-4b03d2fc5e0b",
+                    "path": "<ReverbG2Controller>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "857f6b50-af01-4c94-98d7-4e05ef08bc0b",
+                    "path": "<ViveController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "026d77bc-3d41-4ae6-982d-9d3f9ab04190",
+                    "path": "<QuestProTouchController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01932fff-fea0-43c4-8d59-13d57552ff01",
+                    "path": "<ValveIndexController>{RightHand}/grip",
+                    "interactions": "Press(pressPoint=0.8)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "00aad224-3dc4-4501-be90-81b8b4f8d586",
+                    "path": "<VIVEFocus3Controller>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4b00db7-da09-44c9-8d0b-e665ad0fb56c",
+                    "path": "<WMRSpatialController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9bd319a8-1b5b-42ff-8647-8315e967d31b",
+                    "path": "<HololensHand>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5b0c4a8-b740-4f1e-896f-f5b8bb67c68c",
+                    "path": "<XRSimulatedController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8eda9ba-503a-4f73-a73a-4e7d13f98630",
+                    "path": "<OculusTouchController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cad06681-d430-4e61-8490-0c9726fc6940",
+                    "path": "<ReverbG2Controller>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c67a7dfe-ae7f-4821-9850-4d3ec41d590b",
+                    "path": "<ViveController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "327ead58-ee0c-4c95-b0d0-12ecf76e7b49",
+                    "path": "<QuestProTouchController>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d9679f2-f337-4deb-af5a-a83597ebc74c",
+                    "path": "<ValveIndexController>{LeftHand}/grip",
+                    "interactions": "Press(pressPoint=0.8)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9699f24b-aa70-4e46-8c61-277856d7dcaa",
+                    "path": "<VIVEFocus3Controller>{LeftHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46102cec-cc8d-47ad-9892-a60424c2f3b4",
+                    "path": "<WMRSpatialController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42c922e4-c948-41ce-8ca2-ab6ada1946e3",
+                    "path": "<HololensHand>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bf3c0d4-c30b-41b9-b63d-370bf1d333f5",
+                    "path": "<XRSimulatedController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfa9a40d-a5e1-4467-8f28-7eb1f5a74432",
+                    "path": "<OculusTouchController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f34b8994-37a1-4f5c-8900-e690124fa283",
+                    "path": "<ReverbG2Controller>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bacd7d1f-e18a-42b9-8de6-e2ca67202662",
+                    "path": "<ViveController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df711e28-b26a-4427-b03c-eb34dfcdd913",
+                    "path": "<QuestProTouchController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cce2efd-2b51-4219-8e1c-3120088b6889",
+                    "path": "<ValveIndexController>{LeftHand}/Trigger",
+                    "interactions": "Press(pressPoint=0.8)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94afc69b-81df-41eb-b85f-1de5d6c84712",
+                    "path": "<VIVEFocus3Controller>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9558ca3-200c-4d29-9d85-2d1f7d1e1820",
+                    "path": "<WMRSpatialController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d001de7f-fd8e-4dae-b252-5fad3ae6afb1",
+                    "path": "<HololensHand>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8635a48-38c9-4611-aca1-336eca0cb264",
+                    "path": "<XRSimulatedController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "171516df-5b3a-44e6-9edb-4807e807f20c",
+                    "path": "<OculusTouchController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd7fc31d-8024-4116-9a1e-9e0a5fe5b970",
+                    "path": "<ReverbG2Controller>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4046538-02fc-47a9-9989-d64166e77a2c",
+                    "path": "<ViveController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eef7125f-37fc-4c49-8c8c-ebcf24e4696d",
+                    "path": "<QuestProTouchController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4155e6e5-a369-4287-83d9-b8b4933f3e67",
+                    "path": "<ValveIndexController>{RightHand}/Trigger",
+                    "interactions": "Press(pressPoint=0.8)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbd09e5d-80ae-4c01-99d7-d65b33598156",
+                    "path": "<VIVEFocus3Controller>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "629c4c8b-7f95-46d1-b198-45ccbf00ac4b",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "R Action Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "74297fe8-088c-45ee-b1fd-7e9aa9464692",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Action Button",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "ad459bb8-cb6b-47f0-a5ea-939b44c8cd25",
+                    "path": "<ViveController>{RightHand}/trackpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "R Action Button",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "d98235d7-b997-42da-950a-4812695eb82c",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "R Action Button",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "436513d4-4d8c-47ce-985b-90d236462a89",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "L Action Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "3f0e94ea-58e7-4172-9dfa-d35a5478fdf5",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Action Button",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "94da9fa0-4dd4-4f29-b05f-21998ac56a03",
+                    "path": "<ViveController>{LeftHand}/trackpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "L Action Button",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "bf7b485b-75dc-4599-8b9a-2781fae86bda",
+                    "path": "<ViveController>{LeftHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "L Action Button",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "2595cd93-ad92-4178-8c47-43db0e902868",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "L Secondarry Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04a29ade-f3e0-4ef9-8d48-644d65955681",
+                    "path": "<XRController>{RightHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "R Joystick Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81a76649-b06f-4dda-a92a-a4e92f4cd2ba",
+                    "path": "<ViveController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "R Joystick Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9100ec21-bd5a-44d4-a874-d2d7a52394ba",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Default",
+                    "action": "L Joystick Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86a680b9-36d8-4919-9dbb-84764a17ba81",
+                    "path": "<ViveController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";HTC Vive",
+                    "action": "L Joystick Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f38b90c-1b7e-48b4-85c5-8f5eb469de99",
+                    "path": "<XRController>{RightHand}/{Haptic}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R Haptic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b380e648-25ab-4e4b-8949-2c528f86bb0d",
+                    "path": "<XRController>{LeftHand}/{Haptic}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Haptic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "HTC Vive",
+            "bindingGroup": "HTC Vive",
+            "devices": [
+                {
+                    "devicePath": "<ViveController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Default",
+            "bindingGroup": "Default",
+            "devices": []
+        }
+    ]
+}

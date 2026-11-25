@@ -1,0 +1,56 @@
+# Dreamport ServerKit - wow-accounts.service : the automatic WoW account service (port 8086).
+# Installed by setup-accounts.sh as /etc/systemd/system/wow-accounts.service.
+#   sudo systemctl status wow-accounts          is it running?
+#   sudo journalctl -u wow-accounts -n 50       its log (names, Somnium IDs, nicknames, results -
+#                                               never passwords, salts or verifiers)
+#   sudo systemctl restart wow-accounts         restart (allow.txt / gm.txt changes need no restart)
+#
+# It runs as root because it creates accounts with `docker exec ... ac-database mysql` (the database
+# password stays inside the container). The options below limit what else it can do; none of them
+# blocks the docker command (it only needs the socket /run/docker.sock). setup-accounts.sh checks
+# after every start that the service reached the database from inside these limits.
+
+[Unit]
+Description=Dreamport automatic WoW accounts (port 8086)
+After=network-online.target docker.service
+Wants=network-online.target
+# Keep trying forever (e.g. while the port is still taken after a reboot); never give up.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -I /opt/wow-accounts/wow_accounts.py --bind 0.0.0.0 --port 8086
+Restart=always
+RestartSec=5
+TimeoutStopSec=10
+WorkingDirectory=-/var/lib/wow-accounts
+# The docker command keeps its (unused) client settings here instead of /root/.docker.
+Environment=DOCKER_CONFIG=/var/lib/wow-accounts/docker
+UMask=0077
+SyslogIdentifier=wow-accounts
+StandardOutput=journal
+StandardError=journal
+
+# Limits (systemd.exec). /usr, /boot and /etc are read-only, home folders are hidden. Its own folder
+# /var/lib/wow-accounts (unlock markers, players.tsv, docker client settings) is created by systemd if
+# it is missing (StateDirectory), readable only by root.
+StateDirectory=wow-accounts
+StateDirectoryMode=0700
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+{
+    "name": "SomniumWoW.Editor",
+    "rootNamespace": "SomniumSpace.Worlds.SomniumWoW.EditorTools",
+    "references": [
+        "SomniumWoW",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "SomniumSpace.Network",
+        "Fusion.Unity"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

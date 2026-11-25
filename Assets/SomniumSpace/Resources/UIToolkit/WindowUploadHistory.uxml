@@ -1,0 +1,43 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="Template_LoadingIcon" src="project://database/Assets/SomniumSpace/Resources/UIToolkit/Template_LoadingIcon.uxml?fileID=9197481963319205126&amp;guid=5310b7d5d77fa6e4180e8fc26effa0a5&amp;type=3#Template_LoadingIcon"/>
+    <Style src="project://database/Assets/SomniumSpace/Resources/UIToolkit/SomniumSDKUSS.uss?fileID=7433441132597879392&amp;guid=fd4b59a3292e5564c9b161a1820d2004&amp;type=3#SomniumSDKUSS"/>
+    <ui:VisualElement name="Root" style="width: 100%; height: 100%; min-width: 680px; min-height: 480px; overflow: hidden; -unity-font-definition: initial; -unity-font: resource(&quot;Fonts/Exo/static/Exo-Medium&quot;);">
+        <ui:VisualElement name="UploadsPage" style="width: 100%; height: 100%; position: relative; overflow: hidden; background-image: url(&quot;project://database/Assets/SomniumSpace/Resources/UIToolkit_Images/Image_BackgroundBuild.png?fileID=2800000&amp;guid=0b233769d859ed048abbb87d80af6160&amp;type=3#Image_BackgroundBuild&quot;);">
+            <ui:VisualElement name="Header" style="position: absolute; top: 0; left: 0; right: 0; height: 76px; border-bottom-width: 1px; border-bottom-color: rgba(255, 255, 255, 0.12);">
+                <ui:VisualElement name="LogoSomniumSpace" style="background-image: url(&quot;project://database/Assets/SomniumSpace/Resources/UIToolkit_Images/SomniumLogotype.png?fileID=2800000&amp;guid=a6639ea697805024f9f80b4e0a84477d&amp;type=3#SomniumLogotype&quot;); width: 120px; height: 36px; position: absolute; top: 20px; left: 20px;"/>
+                <ui:VisualElement name="LogoUnitySDK" style="background-image: url(&quot;project://database/Assets/SomniumSpace/Resources/UIToolkit_Images/UnitySDKLogo.png?fileID=2800000&amp;guid=98881bb574ac295459392f92f9f0252d&amp;type=3#UnitySDKLogo&quot;); width: 105px; height: 24px; position: absolute; top: 26px; left: 168px;"/>
+                <ui:VisualElement name="HeaderDivider" style="position: absolute; height: 38px; width: 2px; top: 19px; left: 301px; background-color: rgb(255, 255, 255); border-radius: 1px;"/>
+                <ui:Label text="Upload History" display-tooltip-when-elided="true" name="WindowTitle" style="position: absolute; top: 24px; left: 331px; right: 20px; color: rgb(255, 255, 255); font-size: 20px; -unity-font-style: bold; padding: 0;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="Toolbar" style="position: absolute; top: 76px; left: 20px; right: 20px; height: 70px; flex-direction: row; align-items: center;">
+                <ui:VisualElement name="ToolbarText" style="flex-grow: 1; justify-content: center;">
+                    <ui:Label text="Recent uploads" name="RecordsCountLabel" style="color: rgb(255, 255, 255); font-size: 17px; -unity-font-style: bold; padding: 0;"/>
+                    <ui:Label text="Validation status for your latest bundle submissions" name="ToolbarDescription" style="color: rgba(220, 231, 255, 0.72); font-size: 12px; margin-top: 3px; padding: 0;"/>
+                </ui:VisualElement>
+                <ui:Label text="" name="LastUpdatedLabel" style="color: rgba(220, 231, 255, 0.72); font-size: 12px; margin-right: 14px; padding: 0; -unity-text-align: middle-left;"/>
+                <ui:VisualElement name="RefreshButton" style="width: 112px; height: 32px; align-items: center; justify-content: center; position: relative;">
+                    <ui:VisualElement name="Normal" style="width: 100%; height: 100%; position: absolute; display: flex; background-color: rgb(22, 116, 184); border-radius: 8px;"/>
+                    <ui:VisualElement name="Hover" style="width: 100%; height: 100%; position: absolute; display: none; background-color: rgb(22, 116, 184); border-radius: 8px; border-width: 2px; border-color: rgb(0, 204, 255);"/>
+                    <ui:VisualElement name="Press" style="width: 100%; height: 100%; position: absolute; display: none; background-color: rgb(0, 204, 255); border-radius: 8px;"/>
+                    <ui:VisualElement name="Disable" style="width: 100%; height: 100%; position: absolute; display: none; background-color: rgb(84, 91, 103); border-radius: 8px;"/>
+                    <ui:Label text="Refresh" name="Label" style="color: rgb(255, 255, 255); font-size: 14px; -unity-font-style: bold; -unity-text-align: middle-center; padding: 0; align-self: center;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ContentPanel" style="position: absolute; top: 146px; left: 20px; right: 20px; bottom: 24px; overflow: hidden; background-color: rgba(30, 51, 84, 0.78); border-radius: 8px; border-width: 1px; border-color: rgba(130, 169, 235, 0.22);">
+                <ui:VisualElement name="UploadsList" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none;">
+                    <ui:ScrollView name="ScrollView-Uploads" style="position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="EmptyState" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: none; align-items: center; justify-content: center;">
+                    <ui:Label text="No uploads yet" style="color: rgb(255, 255, 255); font-size: 18px; -unity-font-style: bold; padding: 0;"/>
+                    <ui:Label text="Your recent bundle submissions will appear here." style="color: rgba(220, 231, 255, 0.7); font-size: 13px; margin-top: 7px; padding: 0;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="ErrorState" style="position: absolute; top: 0; left: 40px; right: 40px; bottom: 0; display: none; align-items: center; justify-content: center;">
+                    <ui:Label text="Unable to load upload history" style="color: rgb(255, 161, 161); font-size: 18px; -unity-font-style: bold; padding: 0;"/>
+                    <ui:Label text="" name="ErrorMessageLabel" style="color: rgba(255, 220, 220, 0.86); font-size: 13px; margin-top: 8px; padding: 0; white-space: normal; -unity-text-align: middle-center;"/>
+                    <ui:Label text="Use Refresh to try again." style="color: rgba(220, 231, 255, 0.65); font-size: 12px; margin-top: 12px; padding: 0;"/>
+                </ui:VisualElement>
+                <ui:Instance template="Template_LoadingIcon" name="LoadingLogo" style="width: 100%; height: 100%; position: absolute; align-items: center; justify-content: center; display: flex;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

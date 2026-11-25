@@ -1,0 +1,11 @@
+{
+    "Id": "20261021-120340_step5",
+    "Label": "Before Community Modules 4.0 import",
+    "CreatedLocal": "2026-10-21 12:03:40",
+    "Step": 5,
+    "Scopes": [
+        "Assets/#User/Community Modules"
+    ],
+    "MissingScopes": [],
+    "Restored": false
+}

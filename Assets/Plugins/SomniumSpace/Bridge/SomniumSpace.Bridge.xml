@@ -1,0 +1,3584 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SomniumSpace.Bridge</name>
+    </assembly>
+    <members>
+        <member name="T:SomniumSpace.Bridge.Components.AmbientMode">
+            <summary>
+            Alternative to Unity <see cref="T:UnityEngine.Rendering.AmbientMode"/>
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.AmbientMode.Skybox">
+            <inheritdoc cref="F:UnityEngine.Rendering.AmbientMode.Skybox"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.AmbientMode.Gradient">
+            <inheritdoc cref="F:UnityEngine.Rendering.AmbientMode.Trilight"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.AmbientMode.Color">
+            <inheritdoc cref="F:UnityEngine.Rendering.AmbientMode.Flat"/>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumEnvironment">
+            <summary>
+            Implementation of <see cref="T:SomniumSpace.Bridge.Environment.ISomniumEnvironment">Somnium Space environment</see>
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumEnvironment.ApplyEnvironment">
+            <summary>
+            Applies all selected properties at once
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumNetwork">
+            <summary>
+            Implementation of <see cref="T:SomniumSpace.Bridge.Network.ISomniumNetwork">Somnium Space network</see>
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumNetwork.Status">
+            <inheritdoc cref="P:SomniumSpace.Bridge.Network.ISomniumNetwork.Status"/>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumNetwork.IsConnected">
+            <inheritdoc cref="P:SomniumSpace.Bridge.Network.ISomniumNetwork.IsConnected"/>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumNetwork.IsHost">
+            <inheritdoc cref="P:SomniumSpace.Bridge.Network.ISomniumNetwork.IsHost"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumNetwork.Connected">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnConnected"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumNetwork.Disconnected">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnDisconnected"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumNetwork.JoinedToGameSession">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnJoinedToGameSession"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumNetwork.LeaveFromGameSession">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnLeaveFromGameSession"/>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerAction">
+            <summary>
+            Base class for using <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> features without code
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAction.DoAction(SomniumSpace.Bridge.Components.SomniumTriggerActionArgs)">
+            <summary>
+            Method that using to interact with <see cref="T:SomniumSpace.Bridge.Components.SomniumTriggerAction">Trigger action</see>
+            </summary>
+            <param name="actionArgs"></param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAction.DoAction(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Method that using to interact with <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see>
+            </summary>
+            <param name="somniumPlayer"></param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules">
+            <summary>
+            Allows to force avatar height globally and defining custom areas with specific avatar height.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea">
+            <summary>
+            Defines an area with custom gravity multipliers.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.Area">
+            <summary>
+            Area definition.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.ApplyHeight">
+            <summary>
+            Apply avatar height for players inside this area.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.NonXRHeight">
+            <summary>
+            Sets the avatar height for non XR players inside this area (Not supported for now).
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.XRHeight">
+            <summary>
+            Sets the avatar height for XR players inside this area.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,System.Boolean,System.Single,System.Single)">
+            <summary>
+            Creates a avatar height area using position and size.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRHeight">Not supported for now</param>
+            <param name="XRHeight">Avatar height for XR players (clamped between 0.6 and 5). Ignored if applyHeight is false.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.#ctor(SomniumSpace.Bridge.Components.Area,System.Boolean,System.Single,System.Single)">
+            <summary>
+            Creates a avatar height area from an existing area definition.
+            </summary>
+            <param name="area">Area definition.</param>
+            <param name="applyHeight">Apply Avatar height for XR players in this area.</param>
+            <param name="nonXRHeight">Not supported for now</param>
+            <param name="XRHeight">Avatar height for XR players (clamped between 0.6 and 5). Ignored if applyHeight is false.</param>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.Pos">
+            <summary>
+            Gets the area center position.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.Size">
+            <summary>
+            Gets the area size.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea.Default">
+            <summary>
+            Returns a default avatar height area with position Vector3.zero, size (10, 10, 10) and standard avatar height value.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.GlobalApplyHeight">
+            <summary>
+            Apply the global avatar height for players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.GlobalNonXRHeight">
+            <summary>
+            Gets the global avatar height for non XR players (Not supported for now).
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.GlobalXRHeight">
+            <summary>
+            Gets the global avatar height for XR players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.Areas">
+            <summary>
+            Gets the list of areas with forced avatar height.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.SetGlobalApplyHeight(System.Boolean)">
+            <summary>
+            Sets the global apply avatar height.
+            </summary>
+            <param name="applyHeight">Apply Avatar height.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.SetGlobalNonXRHeight(System.Single)">
+            <summary>
+            Sets the global avatar height for non XR players.
+            </summary>
+            <param name="nonXRHeight">Avatar height value (clamped between 0.6 and 5). Ignored if applyHeight is false.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.SetGlobalXRHeight(System.Single)">
+            <summary>
+            Sets the global avatar height for XR players.
+            </summary>
+            <param name="XRHeight">Avatar height value (clamped between 0.6 and 5). Ignored if applyHeight is false.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.ClampValue(System.Single)">
+            <summary>
+            Clamps a multiplier value between 0f and 10f, representing 0% to 1000% of the original value (1f).
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3,System.Boolean,System.Single,System.Single)">
+            <summary>
+            Adds a new area with custom avatar height value.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="applyHeight">Apply Avatar height for XR players in this area.</param>
+            <param name="nonXRHeight">Not supported for now</param>
+            <param name="XRHeight">Avatar height for XR players (clamped between 0.6 and 5). Ignored if applyHeight is false.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AddArea(SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea)">
+            <summary>
+            Adds a new area with custom avatar height value.
+            </summary>
+            <param name="area">Avatar height area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Boolean,System.Single,System.Single)">
+            <summary>
+            Updates an existing gravity area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+            <param name="applyHeight">Apply Avatar height for XR players in this area.</param>
+            <param name="nonXRHeight">Not supported for now</param>
+            <param name="XRHeight">Avatar height for XR players (clamped between 0.6 and 5). Ignored if applyHeight is false.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.AvatarHeightArea)">
+            <summary>
+            Updates an existing gravity area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">Avatar height area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes a gravity area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.GetArea(System.Int32)">
+            <summary>
+            Returns the avatar height area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The avatar height area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player scale references.
+            </summary>
+            <param name="somniumPlayer">Local player.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerAvatarHeightRules.ApplyCurrentRules">
+            <summary>
+            Applies the avatar height rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerTagRules">
+            <summary>
+            Allows disabling Player tag of other players for players globally and defining areas where it is allowed.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.DisableTag">
+            <summary>
+            Gets the current global disable 'Player Tag' state.
+            Returns true if hidden
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.Areas">
+            <summary>
+            Gets the list of areas where displaying Player tag is allowed.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.SetDisablePlayerTagState(System.Boolean)">
+            <summary>
+            Sets the global Player tag state.
+            </summary>
+            <param name="isDisabled">True to disable Player tag globally.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Adds a new area where Player Tag is allowed.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.AddArea(SomniumSpace.Bridge.Components.Area)">
+            <summary>
+            Adds a new area where Player Tag is allowed.
+            </summary>
+            <param name="area">Area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Updates an existing area using position and size.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.Area)">
+            <summary>
+            Updates an existing area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes an area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.GetArea(System.Int32)">
+            <summary>
+            Returns the area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player info references.
+            </summary>
+            <param name="somniumPlayer">Local player.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTagRules.ApplyCurrentRules">
+            <summary>
+            Applies Tag rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerTeleport">
+            <summary>
+            Allows to teleport <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> to point
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleport.DoAction(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <inheritdoc/>>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerVoiceAmplifier">
+            <summary>
+            Allows to amplify <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player's</see> voice
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerVoiceAmplifier.DoAction(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <inheritdoc/>>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerVoiceLevel">
+            <summary>
+            Allows to change <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player's</see> voice level
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerVoiceLevel.DoAction(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <inheritdoc/>>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayersContainer">
+            <summary>
+            Implementation of <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayersContainer">Somnium Space players container</see>
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayersContainer.PlayersCount">
+            <inheritdoc cref="P:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.PlayersCount"/>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayersContainer.LocalPlayer">
+            <inheritdoc cref="P:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.LocalPlayer"/>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayersContainer.AllPlayers">
+            <inheritdoc cref="P:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.AllPlayers"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayersContainer.GetPlayerByID(System.String)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.GetPlayerByID(System.String)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayersContainer.GetPlayerByNickname(System.String)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.GetPlayerByNickName(System.String)"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayersContainer.LocalPlayerAdded">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnLocalPlayerAdded"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayersContainer.PlayerAdded">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnPlayerAdded"/>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayersContainer.PlayerRemoved">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnPlayerRemoved"/>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ComponentType">
+            <summary>
+            Somnium Space runtime components
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.NONE">
+            <summary>
+            Not recognized
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.VIDEO_PLAYER">
+            <summary>
+            Video player
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.AUDIO_PLAYER">
+            <summary>
+            Audio player
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.BROWSER">
+            <summary>
+            Browser
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.INVENTORY_ITEM">
+            <summary>
+            Inventory Item
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.TIP_JAR">
+            <summary>
+            Tip Jar
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.KEYBOARD">
+            <summary>
+            Virtual keyboard
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.ComponentType.CLIMBABLE_SURFACE">
+            <summary>
+            Climbable surface
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ISomniumControlComponent">
+            <summary>
+            Base interface for control components that are using in SDK
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumControlComponent">
+            <summary>
+            Base implementation for control components that are using in SDK
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ISomniumTipJar">
+            <summary>
+            Runtime component for Tip Jar in VR client
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumTipJar.Initialize(System.Single,System.Single)">
+            <summary>
+            Initialize runtime component
+            </summary>
+            <param name="width">Fit boundary width</param>
+            <param name="height">Fit boundary height</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumTipJar.Clear">
+            <summary>
+            Clear tip jar
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumTipJar">
+            <summary>
+            Implementation of <see cref="T:SomniumSpace.Bridge.Components.ISomniumTipJar">Somnium Space tip jar</see>
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTipJar.Width">
+            <summary>
+            Defines the width dimension of the Tip Jar within the Somnium Space system,
+            which determines the item's horizontal size and capacity constraints.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTipJar.Height">
+            <summary>
+            Represents the vertical dimension of the Tip Jar in the Somnium Space system,
+            determining the item's height in units.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ISomniumVideoPlayer">
+            <summary>
+            Represents a video player interface with full playback control, event handling, and configuration options
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.OnEventReceived">
+            <summary>
+            Event triggered when a specific video-related event is received in the video player component
+            </summary>
+            <remarks>
+            This event is invoked with a <see cref="T:SomniumSpace.Bridge.Components.SomniumVideoEvent"/> parameter that contains information about the received event
+            It can be used to handle playback changes, errors, buffering updates, and other relevant video player events
+            </remarks>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Initialize(System.String,System.Boolean,System.Boolean,System.Single,System.Boolean,System.Boolean,SomniumSpace.Bridge.Components.SomniumRenderTarget[],System.Boolean,SomniumSpace.Bridge.Components.SomniumAudioSource[])">
+            <summary>
+            Initializes the video player with the specified parameters
+            </summary>
+            <param name="link">The media path to the video.</param>
+            <param name="autoPlay">Indicates whether the video should play automatically</param>
+            <param name="loop">Specifies if the video should loop when it reaches the end</param>
+            <param name="volume">The initial volume level of the video (0 to 1)</param>
+            <param name="useNativeControls">Determines whether to enable native player controls</param>
+            <param name="enableAdditionalRenderTargets">Enables or disables additional render targets</param>
+            <param name="additionalRenderTargets">An array of additional render targets to use for rendering the video</param>
+            <param name="enableAdditionalAudioSources">Enables or disables additional audio sources</param>
+            <param name="additionalAudioSources">An array of additional audio sources for audio playback</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetLinkAndPrepare(System.String)">
+            <summary>
+            Sets the media link for the video player and prepares it for playback
+            </summary>
+            <param name="link">The URL or file path to the media resource to be set for playback</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetAutoPlay(System.Boolean)">
+            <summary>
+            Sets the video player's autoplay behavior
+            </summary>
+            <param name="isAutoPlay">Determines whether the video should start playing automatically when prepared</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsBuffering">
+            <summary>
+            Indicates whether the video is currently buffering
+            </summary>
+            <returns>True if the video is buffering; otherwise false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.MediaPath">
+            <summary>
+            Gets the media path of the video currently loaded in the video player
+            </summary>
+            <returns>The path to the currently loaded video media as a string</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetVolume(System.Single)">
+            <summary>
+            Sets the volume level for the video playback
+            </summary>
+            <param name="value">The desired volume level, ranging from 0 (mute) to 1 (maximum volume)</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.MuteAudio(System.Boolean)">
+            <summary>
+            Mutes or unmutes the audio of the video player
+            </summary>
+            <param name="mute">Indicates whether to mute the audio. Set to true to mute, or false to unmute</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsMuted">
+            <summary>
+            Determines whether the video player's audio is currently muted
+            </summary>
+            <returns>Returns true if the audio is muted; otherwise, false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetVolume">
+            <summary>
+            Retrieves the current volume level of the video player
+            </summary>
+            <returns>The volume level as a float, where 0 represents silent and 1 represents the maximum volume</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetLooping(System.Boolean)">
+            <summary>
+            Sets whether the video playback should loop when it reaches the end
+            </summary>
+            <param name="looping">A boolean value indicating if looping should be enabled or disabled</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsLooping">
+            <summary>
+            Indicates whether the video playback is set to loop when it reaches the end
+            </summary>
+            <returns>True if looping is enabled, otherwise false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.CanPlay">
+            <summary>
+            Determines if the video player is ready to start playback
+            </summary>
+            <returns>True if the video is prepared and ready to play; otherwise, false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.WaitUntilPrepareAndPlay">
+            <summary>
+            Waits until the video player has finished preparation and starts playback
+            This method ensures the video is fully prepared before initiating playback
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Reload">
+            <summary>
+            Reloads the video player and reinitialize its state. Typically used to refresh the player's configuration or to address playback issues
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Sync">
+            <summary>
+            Synchronizes the state of the video player across connected clients or systems
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Play">
+            <summary>
+            Starts or resumes video playback from the current position
+            If the video is paused, it will continue from where it left off
+            If the video is stopped or has not yet started, it will play from the beginning
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsPlaying">
+            <summary>
+            Determines whether the video is currently playing
+            </summary>
+            <returns>True if the video is playing; otherwise, false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Pause">
+            <summary>
+            Pauses the video playback
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsPaused">
+            <summary>
+            Checks whether the video playback is currently paused
+            </summary>
+            <returns>True if the video is paused, otherwise false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Stop">
+            <summary>
+            Stops the video playback and resets the playback state
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsFinished">
+            <summary>
+            Determines whether the video playback has reached the end and is finished
+            </summary>
+            <returns>True if the video has finished playback, otherwise false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsSeeking">
+            <summary>
+            Checks whether the video playback is currently in a seeking state
+            </summary>
+            <returns>True if the video is seeking to a new position, otherwise false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Seek(System.Double)">
+            <summary>
+            Seeks to the specified time in the video playback
+            </summary>
+            <param name="time">The time, in seconds, to which the playback should seek</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Rewind">
+            <summary>
+            Rewinds the video to the beginning
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetCurrentTime">
+            <summary>
+            Retrieves the current playback position of the video in seconds
+            </summary>
+            <returns>The current playback time in seconds as a double</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetDuration">
+            <summary>
+            Retrieves the total duration of the media currently loaded in the video player
+            </summary>
+            <returns>A double representing the total duration of the media in seconds. Returns 0 if no media is loaded</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.CloseMedia">
+            <summary>
+            Releases the currently loaded media and associated resources, stopping any ongoing playback
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetTexture">
+            <summary>
+            Retrieves the texture currently being used to render the video
+            </summary>
+            <returns>The texture associated with the video playback, or null if no texture is available</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetAudioSource">
+            <summary>
+            Retrieves the primary audio source associated with the video player
+            </summary>
+            <returns>The <see cref="T:UnityEngine.AudioSource"/> instance used for audio playback</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Clear">
+            <summary>
+            Clears the video player state, including removing event subscriptions and releasing resources
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetPositionalAudio(System.Boolean)">
+            <summary>
+            Enables or disables positional audio for the video player
+            </summary>
+            <param name="positionalAudio">A boolean value indicating whether positional audio should be enabled</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetPositionalAudio">
+            <summary>
+            Retrieves the current state of positional audio for the video player
+            </summary>
+            <returns>True if positional audio is enabled; otherwise, false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetProgress(System.Single)">
+            <summary>
+            Sets the playback progress of the video to a specified point
+            </summary>
+            <param name="progress">The progress value to set, ranging from 0.0 (start of the video) to 1.0 (end of the video)</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.ReleaseControl">
+            <summary>
+            Releases control of the video player, reverting any exclusive controls or locks
+            imposed by the current instance. This allows other entities or components to
+            take control of the video player for interaction or playback modification
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.TakeControl">
+            <summary>
+            Allows the caller to take control of the video player, enabling the ability to manage playback and other player settings
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsHost">
+            <summary>
+            Determines if the current client is the host for the video player
+            </summary>
+            <returns>True if the client is the host; otherwise, false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsLive">
+            <summary>
+            Determines whether the video stream is currently live
+            </summary>
+            <returns>A boolean indicating if the video is live</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetHostName">
+            <summary>
+            Retrieves the host name associated with the video player
+            </summary>
+            <returns>The hostname of the video player's host</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.CanTakeControl">
+            <summary>
+            Determines whether the current user can take control of the video player
+            </summary>
+            <returns>True if the current user can take control of the video player; otherwise, false</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsProgressChanging">
+            <summary>
+            Determines whether the progress of the video playback is currently being adjusted
+            </summary>
+            <returns>True if the video playback progress is being changed; otherwise, false</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumAudioSource">
+            <summary>
+            Represents an additional audio source configuration for the video player.
+            This struct allows the video player to manage multiple audio sources with individual positional audio settings.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumAudioSource.AudioSource">
+            <summary>
+            The AudioSource component that will be used for audio playback.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumAudioSource.PositionalAudio">
+            <summary>
+            Determines whether this audio source should use positional 3D audio or 2D audio.
+            When true, the audio will be spatialized based on the AudioSource's position in 3D space.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumRenderTarget">
+            <summary>
+            Represents a render target for displaying content on a specific material
+            of a <see cref="T:UnityEngine.MeshRenderer"/> component.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumRenderTarget.Renderer">
+            <summary>
+            Represents a reference to a <see cref="T:UnityEngine.MeshRenderer"/> component.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumRenderTarget.MaterialIndex">
+            <summary>
+            Specifies the index of the material within a <see cref="T:UnityEngine.MeshRenderer"/> component.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings">
+            <summary>
+            Serializable representation of Unity AudioSource component settings
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.ConnectVideoPlayer(SomniumSpace.Bridge.Components.ISomniumVideoPlayer)">
+            <summary>
+            Connects a video player to the audio settings, allowing the audio settings to control the player's audio source.
+            </summary>
+            <param name="videoPlayer">The video player to be connected to the audio settings.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetAudioSource">
+            <summary>
+            Retrieves the currently assigned AudioSource controlled by the audio settings implementation.
+            </summary>
+            <returns>The assigned AudioSource instance, or null if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.ApplySettings">
+            <summary>
+            Applies the current audio settings to the assigned AudioSource component.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetSettings">
+            <summary>
+            Copies the audio settings from the assigned AudioSource component into the internal settings representation.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetBypassEffects(System.Boolean)">
+            <summary>
+            Sets whether the audio effects bypass in the assigned AudioSource should be enabled or disabled.
+            </summary>
+            <param name="bypassEffects">A boolean value indicating whether to bypass audio effects (true to bypass, false otherwise).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetBypassEffects">
+            <summary>
+            Determines whether the bypass effects option is enabled for the currently assigned AudioSource.
+            </summary>
+            <returns>True if effects bypass is enabled; otherwise, false. Returns false if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetBypassReverbZones(System.Boolean)">
+            <summary>
+            Specifies whether the assigned AudioSource should bypass reverb zones.
+            </summary>
+            <param name="bypassReverbZones">A boolean indicating whether reverb zones should be bypassed.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetBypassReverbZones">
+            <summary>
+            Retrieves whether the assigned AudioSource is set to bypass reverb zones.
+            </summary>
+            <returns>A boolean indicating if reverb zones are bypassed for the assigned AudioSource.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetPriority(System.Int32)">
+            <summary>
+            Sets the priority level for the audio source controlled by the video player's audio settings.
+            </summary>
+            <param name="priority">The priority level to assign to the audio source, where lower values indicate higher priority.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetPriority">
+            <summary>
+            Retrieves the priority value of the assigned AudioSource.
+            If no AudioSource is assigned, a default priority value is returned.
+            </summary>
+            <returns>The priority value of the assigned AudioSource, or a default value if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetPitch(System.Single)">
+            <summary>
+            Adjusts the pitch of the audio being played by the assigned audio source.
+            </summary>
+            <param name="pitch">The value to set the pitch to. A value of 1.0 represents the normal pitch, values below 1.0 lower the pitch, and values above 1.0 increase the pitch.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetPitch">
+            <summary>
+            Retrieves the pitch value of the assigned AudioSource.
+            </summary>
+            <returns>The current pitch of the assigned AudioSource, or 1.0f if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetStereoPan(System.Single)">
+            <summary>
+            Sets the stereo pan of the audio, determining the balance between the left and right speakers.
+            </summary>
+            <param name="stereoPan">A value ranging from -1.0 (left) to 1.0 (right). A value of 0 centers the audio.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetStereoPan">
+            <summary>
+            Retrieves the stereo pan value of the assigned AudioSource, representing the left-right spatial blend of the audio.
+            </summary>
+            <returns>The stereo pan value of the AudioSource, or 0 if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetSpatialBlend(System.Single)">
+            <summary>
+            Sets the spatial blend for the AudioSource, determining the balance between 2D and 3D audio.
+            </summary>
+            <param name="spatialBlend">A value between 0 (entirely 2D) and 1 (entirely 3D) that specifies the spatial blend.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetSpatialBlend">
+            <summary>
+            Retrieves the spatial blend value currently applied to the AudioSource.
+            </summary>
+            <returns>The spatial blend value of the assigned AudioSource, or 0 if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetReverbZoneMix(System.Single)">
+            <summary>
+            Sets the Reverb Zone Mix level for the associated audio settings, determining the effect of the reverb zones on the audio source.
+            </summary>
+            <param name="reverbZoneMix">The reverb zone mix value to apply, typically ranging between 0.0 (dry) and 1.1 (fully wet).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetReverbZoneMix">
+            <summary>
+            Retrieves the current reverb zone mix value from the assigned AudioSource component.
+            </summary>
+            <returns>The reverb zone mix value. If no AudioSource is assigned, returns 1.0f as the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetDopplerLevel(System.Single)">
+            <summary>
+            Sets the Doppler level for the audio source, determining how the Doppler effect is applied to the audio.
+            </summary>
+            <param name="dopplerLevel">The Doppler level to set, influencing the perceived frequency shift of the sound.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetDopplerLevel">
+            <summary>
+            Retrieves the Doppler effect level currently applied to the assigned AudioSource.
+            </summary>
+            <returns>The Doppler level as a float. Returns 1.0 if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetSpread(System.Single)">
+            <summary>
+            Sets the spread of the audio, which determines how directional or omnidirectional the audio source appears to be.
+            </summary>
+            <param name="spread">The spread value, typically ranging from 0 (fully directional) to 360 (fully omnidirectional).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetSpread">
+            <summary>
+            Retrieves the spread value of the assigned AudioSource, which defines the degree of sound distribution in the spatial environment.
+            </summary>
+            <returns>The spread value of the AudioSource, or 0 if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetVolumeRolloff(UnityEngine.AudioRolloffMode)">
+            <summary>
+            Sets the volume rolloff mode for the assigned AudioSource, determining how the audio volume attenuates as the listener moves away from the source.
+            </summary>
+            <param name="rolloffMode">The AudioRolloffMode to apply to control audio attenuation.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetVolumeRolloff">
+            <summary>
+            Retrieves the volume rolloff mode currently applied to the associated AudioSource.
+            </summary>
+            <returns>The AudioRolloffMode of the currently assigned AudioSource, or Logarithmic if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetCustomRolloffCurve(UnityEngine.AnimationCurve)">
+            <summary>
+            Sets a custom rolloff curve to define how audio attenuation changes with distance.
+            </summary>
+            <param name="animationCurve">The AnimationCurve instance representing the custom rolloff curve.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetCustomRolloffCurve">
+            <summary>
+            Retrieves the custom rolloff curve used by the audio source to determine how audio volume diminishes over distance.
+            </summary>
+            <returns>The custom rolloff curve for the audio source, or a default curve if no audio source is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetMinDistance(System.Single)">
+            <summary>
+            Sets the minimum distance at which the audio source will begin attenuation.
+            </summary>
+            <param name="minDistance">The minimum distance, in world units, where attenuation starts.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetMinDistance">
+            <summary>
+            Retrieves the minimum distance at which audio from the assigned AudioSource is heard at full volume.
+            </summary>
+            <returns>The minimum distance value, or 0 if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetMaxDistance(System.Single)">
+            <summary>
+            Sets the maximum distance at which the audio will be heard before it begins to attenuate.
+            </summary>
+            <param name="maxDistance">The maximum distance value to set for the audio source.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetMaxDistance">
+            <summary>
+            Retrieves the maximum distance value for the assigned AudioSource.
+            </summary>
+            <returns>The maximum distance at which the audio source is audible. Returns a default value of 500 if no AudioSource is assigned.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.SetPositionalAudio(System.Boolean)">
+            <summary>
+            Sets whether positional audio is enabled, allowing the audio's spatial attributes to reflect its position in the virtual environment.
+            </summary>
+            <param name="positionalAudio">A boolean indicating whether positional audio should be enabled or disabled.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings.GetPositionalAudio">
+            <summary>
+            Retrieves the current state of positional audio settings for the connected video player.
+            </summary>
+            <returns>True if positional audio is enabled; otherwise, false.</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumVideoEvent">
+            <summary>
+            AV Pro events
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.MetaDataReady">
+            <summary>
+            Triggered when meta data(width, duration etc) is available
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.ReadyToPlay">
+            <summary>
+            Triggered when the video is loaded and ready to play
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Started">
+            <summary>
+            Triggered when the playback starts
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.FirstFrameReady">
+            <summary>
+            Triggered when the first frame has been rendered
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.FinishedPlaying">
+            <summary>
+            Triggered when a non-looping video has finished playing
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Closing">
+            <summary>
+            Triggered when the media is closed
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Error">
+            <summary>
+            Triggered when an error occurs
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.SubtitleChange">
+            <summary>
+            Triggered when the subtitles change
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Stalled">
+            <summary>
+            Triggered when media is stalled (eg. when lost connection to media stream)
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Unstalled">
+            <summary>
+            Triggered when media is resumed form a stalled state (eg. when lost connection is re-established)
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.ResolutionChanged">
+            <summary>
+            Triggered when the resolution of the video has changed (including the load) Useful for adaptive streams
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.StartedSeeking">
+            <summary>
+            Triggered when seeking begins
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.FinishedSeeking">
+            <summary>
+            Triggered when seeking has finished
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.StartedBuffering">
+            <summary>
+            Triggered when buffering begins
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.FinishedBuffering">
+            <summary>
+            Triggered when buffering has finished
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.PropertiesChanged">
+            <summary>
+            Triggered when any properties (eg stereo packing are changed) - this has to be triggered manually
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.PlaylistItemChanged">
+            <summary>
+            Triggered when the new item is played in the playlist
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.PlaylistFinished">
+            <summary>
+            Triggered when the playlist reaches the end
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.TextTracksChanged">
+            <summary>
+            Triggered when the text tracks are added or removed
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Paused">
+            <summary>
+            Triggered when the player is paused
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Unpaused">
+            <summary>
+            Triggered when the player resumes playing
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.TextCueChanged">
+            <summary>
+            Triggered when the text to display changes
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Initialized">
+            <summary>
+            Triggered when the video player is initialized and ready for further configuration or playback
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.StartedLinkPreparing">
+            <summary>
+            Triggered when the process of preparing a link for playback has started
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.FinishedLinkPreparing">
+            <summary>
+            Triggered when the link preparation process is completed
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Muted">
+            <summary>
+            Triggered when the video is muted
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.Unmuted">
+            <summary>
+            Triggered when the video is unmuted
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEvent.HostChanged">
+            <summary>
+            Triggered when the video host has been changed
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler">
+            <summary>
+            Handles video player's events
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.ReadyToPlay">
+            <summary>
+            Event triggers when video is ready to play
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.Started">
+            <summary>
+            Event triggers when video starts
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.FirstFrameReady">
+            <summary>
+            Event triggers when video first frame is ready
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.FinishedPlaying">
+            <summary>
+            Event triggers when video playing finished
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.Closing">
+            <summary>
+            Event triggers when video is closing
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.Error">
+            <summary>
+            Event triggers when video got error
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.StartedSeeking">
+            <summary>
+            Event triggers when video seeking started
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.FinishedSeeking">
+            <summary>
+            Event triggers when video seeking finished
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.StartedBuffering">
+            <summary>
+            Event triggers when video started buffering
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.FinishedBuffering">
+            <summary>
+            Event triggers when video finished buffering
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.Paused">
+            <summary>
+            Event triggers when video paused
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.Unpaused">
+            <summary>
+            Event triggers when video unpaused
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoEventsHandler.ReceiveEvents(SomniumSpace.Bridge.Components.SomniumVideoEvent)">
+            <summary>
+            Events subscription
+            </summary>
+            <param name="videoEvent">Event type</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumVideoPlayer">
+            <summary>
+            Implementation of <see cref="T:SomniumSpace.Bridge.Components.ISomniumVideoPlayer">Somnium Space video player</see>
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumVideoPlayer.OnEventReceived">
+            <inheritdoc cref="E:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.OnEventReceived"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.ConnectAudioSettings(SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings)">
+            <summary>
+            Connects the specified audio settings to the video player.
+            </summary>
+            <param name="audioSettings">An implementation of <see cref="T:SomniumSpace.Bridge.Components.SomniumVideoPlayerAudioSettings"/> to configure the audio settings for the video player.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.SetAndPrepareLink(System.String)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetLinkAndPrepare(System.String)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.SetAutoPlay(System.Boolean)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetAutoPlay(System.Boolean)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsBuffering">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsBuffering"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.MediaPath">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.MediaPath"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.SetVolume(System.Single)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetVolume(System.Single)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.MuteAudio(System.Boolean)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.MuteAudio(System.Boolean)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsMuted">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsMuted"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.GetVolume">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetVolume"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.SetLooping(System.Boolean)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetLooping(System.Boolean)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsLooping">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsLooping"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.CanPlay">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.CanPlay"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.WaitUntilPrepareAndPlay">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.WaitUntilPrepareAndPlay"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.Reload">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Reload"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.Sync">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Sync"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.Play">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Play"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsPlaying">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsPlaying"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.Pause">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Pause"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsPaused">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsPaused"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.Stop">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Stop"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsFinished">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsFinished"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsSeeking">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsSeeking"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.Seek(System.Double)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Seek(System.Double)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.Rewind">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.Rewind"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.GetCurrentTime">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetCurrentTime"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.GetDuration">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetDuration"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.CloseMedia">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.CloseMedia"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.GetTexture">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetTexture"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.SetProgress(System.Single)">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.SetProgress(System.Single)"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.ReleaseControl">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.ReleaseControl"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.TakeControl">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.TakeControl"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsHost">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsHost"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsLive">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsLive"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.GetHostName">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.GetHostName"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.CanTakeControl">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.CanTakeControl"/>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayer.IsProgressChanging">
+            <inheritdoc cref="M:SomniumSpace.Bridge.Components.ISomniumVideoPlayer.IsProgressChanging"/>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls">
+            <summary>
+            SomniumVideoPlayerControls provides methods to manage video playback and control
+            functionalities for a video player component, including play, pause, volume adjustment,
+            mute, and setting playback progress
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.Reload">
+            <summary>
+            Restarts the video playback by reloading the video on the video player
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.Sync">
+            <summary>
+            Synchronizes the current state of the video player progress with the host's progress
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.Play">
+            <summary>
+            Starts the video playback on the video player
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.Pause">
+            <summary>
+            Pauses the video playback on the video player
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.SetVolume(System.Single)">
+            <summary>
+            Sets the audio volume of the video player to the specified level
+            </summary>
+            <param name="volume">A float value representing the desired volume level (typically between 0.0 and 1.0)</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.Mute(System.Boolean)">
+            <summary>
+            Mutes or unmutes the video player's audio based on the specified state
+            </summary>
+            <param name="mute">A boolean value where true mutes the audio and false unmutes it</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.TakeControl">
+            <summary>
+            Takes control of the video player, overriding external sources and allowing the current instance to manage it
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.ReleaseControl">
+            <summary>
+            Releases control of the video player, allowing external sources to manage it
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.SetProgress(System.Single)">
+            <summary>
+            Sets the playback progress of the video player to the specified value
+            </summary>
+            <param name="progress">The desired progress value, typically a normalized value ranging from 0 to 1</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.SetLink">
+            <summary>
+            Sets the video player's link using the input field's text and begins the process of preparing and playing the video
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.PasteLink">
+            <summary>
+            Pastes the text from the system clipboard into the input field associated with the video player controls
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.ClearLink">
+            <summary>
+            Clears the text from the input field associated with the video player controls
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumVideoPlayerControls.SetVolumeValue(System.Single)">
+            <summary>
+            Updates the UI components to display the specified audio volume level
+            </summary>
+            <param name="volume">A float value representing the desired volume level (typically between 0.0 and 1.0)</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ISomniumClimbableSurface">
+            <summary>
+            Runtime component for Climbable Surface in VR client
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumClimbableSurface.Initialize(UnityEngine.GameObject)">
+            <summary>
+            Initialize runtime component
+            </summary>
+            <param name="gameObject">Gameobject with climbable surface</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumClimbableSurface.Clear">
+            <summary>
+            Clear Climbable Surface
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ISomniumInventoryItem">
+            <summary>
+            Runtime component for Inventory Item in VR client
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumInventoryItem.Initialize(System.String,System.String,System.Int32,SomniumSpace.Bridge.Components.SomniumInventoryItemType,System.Single,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            Initialize runtime component
+            </summary>
+            <param name="id">Item Id</param>
+            <param name="bundleId">Bundle Id</param>
+            <param name="category">Item category</param>
+            <param name="itemType">Custom or Minted</param>
+            <param name="width">Fit boundary width</param>
+            <param name="height">Fit boundary height</param>
+            <param name="canBeGrabbed">Is Item can be grabbed</param>
+            <param name="needToSync">Sync through networking</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumInventoryItem.Clear">
+            <summary>
+            Clear inventory item
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumAvatarInventoryItem">
+            <summary>
+            Represents an inventory item specifically categorized under "Avatars" within Somnium Space.
+            </summary>
+            <remarks>
+            This class inherits from <see cref="T:SomniumSpace.Bridge.Components.SomniumInventoryItem"/> and overrides its category to define the type as "Avatars".
+            It serves as a specialized inventory item dedicated to avatar-related content in Somnium Space.
+            </remarks>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumAvatarInventoryItem.Category">
+            <summary>
+            Gets the category type of the inventory item.
+            </summary>
+            <value>
+            A <see cref="!:CategoryType"/> enumeration value that represents the specific category this inventory item belongs to.
+            For example, "Avatars" for avatar-related inventory items or "Wearables" for wearable content.
+            </value>
+            <remarks>
+            This property is overridden in derived classes to represent the appropriate category for specific inventory item types.
+            It helps distinguish and organize inventory items by their related category within the system.
+            </remarks>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumBuildingInventoryItem">
+            <summary>
+            Represents an inventory item specific to buildings within the Somnium Space ecosystem.
+            </summary>
+            <remarks>
+            This class extends the <see cref="T:SomniumSpace.Bridge.Components.SomniumInventoryItem"/> class and overrides
+            the <c>Category</c> property to specify that the item belongs to the "BuildingItems" category.
+            </remarks>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumBuildingInventoryItem.Category">
+            <summary>
+            Defines the category to which a specific inventory item belongs.
+            </summary>
+            <remarks>
+            This property is used to classify inventory items into distinct categories,
+            such as buildings, avatars, vehicles, and more, based on the <see cref="!:CategoryType"/> enum.
+            The overridden value specifies the item's category within the Somnium Space ecosystem.
+            </remarks>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumInventoryItem">
+            <summary>
+            Implementation of <see cref="T:SomniumSpace.Bridge.Components.ISomniumInventoryItem">Somnium Space inventory item</see>
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumInventoryItem.Category">
+            <summary>
+            Represents the category type of the inventory item within the Somnium Space system,
+            defining its classification such as Avatars, Wearables, Vehicles, and others.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.ItemType">
+            <summary>
+            Specifies the type of the inventory item within the Somnium Space system.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.Id">
+            <summary>
+            Represents the unique identifier for a Somnium inventory item.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.PreviewId">
+            <summary>
+            Identifier for the item's preview, used to fetch and display preview assets
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.BundleId">
+            <summary>
+            Identifier for a bundle associated with the inventory item
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.Name">
+            <summary>
+            Represents the display name of the inventory item within the Somnium Space system,
+            providing a textual identifier for the item that is both user-friendly and descriptive.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.Width">
+            <summary>
+            Defines the width dimension of the inventory item within the Somnium Space system,
+            which determines the item's horizontal size and capacity constraints.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.Height">
+            <summary>
+            Represents the vertical dimension of the inventory item in the Somnium Space system,
+            determining the item's height in units.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.CanBeGrabbed">
+            <summary>
+            Indicates whether the inventory item within the Somnium Space system
+            can be grabbed or interacted with. This property determines if the
+            item allows physical interactions or manipulations by the user.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItem.NeedToSync">
+            <summary>
+            Indicates whether the inventory item needs to synchronize its data with the Somnium Space backend system
+            or other connected components to ensure consistency.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumInventoryItemType">
+            <summary>
+            Defines the types of inventory items within the Somnium Space system.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItemType.Custom">
+            <summary>
+            Represents a custom inventory item type within the Somnium Space system.
+            This type is used to denote user-defined or non-standard inventory items
+            that may not be minted as blockchain assets.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumInventoryItemType.Minted">
+            <summary>
+            Represents a minted inventory item type within the Somnium Space system.
+            This type is used for items that are registered as blockchain assets,
+            ensuring ownership and provenance through decentralized technology.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumWearableInventoryItem">
+            <summary>
+            Represents a wearable inventory item in the Somnium Space ecosystem.
+            This class is a specific implementation of <see cref="T:SomniumSpace.Bridge.Components.SomniumInventoryItem"/>
+            and overrides the category type to "Wearables."
+            </summary>
+            <remarks>
+            This class is a part of the Somnium Space Bridge Components and extends the
+            base functionality of a general inventory item to include functionality specific
+            to wearable items in the virtual environment.
+            </remarks>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumWearableInventoryItem.Category">
+            <summary>
+            Gets the category associated with the inventory item.
+            </summary>
+            <remarks>
+            The <c>Category</c> property specifies the inventory item's type using the <see cref="!:CategoryType"/> enumeration.
+            It is overridden in derived classes to define the specific category the item belongs to, such as "Wearables", "Avatars", or "BuildingItems".
+            </remarks>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ISomniumRuntimeComponent">
+            <summary>
+            Base interface for runtime components
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.ISomniumRuntimeComponent.InstanceId">
+            <summary>
+            Networking sync ID
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.ISomniumKeyboard">
+            <summary>
+            Runtime bridge for Somnium Space virtual keyboard.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumKeyboard.Initialize(TMPro.TMP_InputField,SomniumSpace.Bridge.Components.SomniumKeyboardSettings)">
+            <summary>
+            Initialize runtime component
+            </summary>
+            <param name="inputField">Input field for keyboard</param>
+            <param name="settings">Keyboard settings configured in SDK</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumKeyboard.ApplySettings(SomniumSpace.Bridge.Components.SomniumKeyboardSettings)">
+            <summary>
+            Applies keyboard settings after initialization.
+            </summary>
+            <param name="settings">Keyboard settings configured in SDK</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.ISomniumKeyboard.Clear">
+            <summary>
+            Clear keyboard runtime state
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumKeyboard">
+            <summary>
+            SDK component that connects a TMP_InputField to the virtual keyboard at runtime.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.InputField">
+            <summary>
+            The target input field handling the text entry state and implementation.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.IsHidden">
+            <summary>
+            If true, the keyboard will not be displayed.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.DuplicatedInput">
+            <summary>
+            Additionally displays a duplicated text preview box directly above the virtual keyboard layout.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.CanAttach">
+            <summary>
+            If true, allows the keyboard to snap and attach itself to the target input field.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.ActivateImmediately">
+            <summary>
+            If true, skips the open/activation animation and appears instantly.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.DeactivateImmediately">
+            <summary>
+            If true, skips the close/deactivation animation and disappears instantly.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.OffsetPosition">
+            <summary>
+            Positional offset applied relative to the resolved anchor target (uses Attach Transform, falls back to local InputField space if unassigned).
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.OffsetRotation">
+            <summary>
+            Euler rotation offset applied relative to the resolved anchor target orientation (falls back to local InputField rotation if unassigned).
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumKeyboard.AttachTransform">
+            <summary>
+            The external target anchor transform. If null or unassigned, positioning defaults back to this InputField's transform.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetHiddenState(System.Boolean)">
+            <summary>
+            If true, the keyboard will not be displayed.
+            </summary>
+            <param name="isHidden">If true, the keyboard will not be displayed.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetDuplicatedInputState(System.Boolean)">
+            <summary>
+            Additionally displays a duplicated text preview box directly above the virtual keyboard layout.
+            </summary>
+            <param name="duplicatedInput">Additionally displays a duplicated text preview box directly above the virtual keyboard layout.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetCanAttachState(System.Boolean)">
+            <summary>
+            If true, allows the keyboard to snap and attach itself to the target input field.
+            </summary>
+            <param name="canAttach">If true, allows the keyboard to snap and attach itself to the target input field.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetActivateImmediatelyState(System.Boolean)">
+            <summary>
+            If true, skips the open/activation animation and appears instantly.
+            </summary>
+            <param name="activateImmediately">If true, skips the open/activation animation and appears instantly.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetDeactivateImmediatelyState(System.Boolean)">
+            <summary>
+            If true, skips the close/deactivation animation and disappears instantly.
+            </summary>
+            <param name="deactivateImmediately">If true, skips the close/deactivation animation and disappears instantly.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetOffsetPosition(UnityEngine.Vector3)">
+            <summary>
+            Positional offset applied relative to the resolved anchor target (uses Attach Transform, falls back to local InputField space if unassigned).
+            </summary>
+            <param name="offsetPosition">Positional offset applied relative to the resolved anchor target (uses Attach Transform, falls back to local InputField space if unassigned).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetOffsetRotation(UnityEngine.Vector3)">
+            <summary>
+            Euler rotation offset applied relative to the resolved anchor target orientation (falls back to local InputField rotation if unassigned).
+            </summary>
+            <param name="offsetRotation">Euler rotation offset applied relative to the resolved anchor target orientation (falls back to local InputField rotation if unassigned).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetAttachTransform(UnityEngine.Transform)">
+            <summary>
+            The external target anchor transform. If null or unassigned, positioning defaults back to this InputField's transform.
+            </summary>
+            <param name="attachTransform">The external target anchor transform. If null or unassigned, positioning defaults back to this InputField's transform.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.GetKeyboardSettings">
+            <summary>
+            Gets all keyboard settings as a serializable settings object.
+            </summary>
+            <returns>Current keyboard settings.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboard.SetKeyboardSettings(SomniumSpace.Bridge.Components.SomniumKeyboardSettings)">
+            <summary>
+            Applies keyboard settings from a settings object.
+            </summary>
+            <param name="settings">Keyboard settings.</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumKeyboardSettings">
+            <summary>
+            User-configurable virtual keyboard settings stored in the SDK component.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.IsHidden">
+            <summary>
+            If true, the runtime keyboard will not be shown.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.DuplicatedInput">
+            <summary>
+            If true, the runtime keyboard mirrors text into its duplicated input field.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.CanAttach">
+            <summary>
+            If true, the keyboard can snap to the input field anchor.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.ActivateImmediately">
+            <summary>
+            If true, skips the keyboard opening animation.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.DeactivateImmediately">
+            <summary>
+            If true, skips the keyboard closing animation.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.OffsetPosition">
+            <summary>
+            Position offset relative to the resolved anchor transform.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.OffsetRotation">
+            <summary>
+            Rotation offset relative to the resolved anchor transform.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.AttachTransform">
+            <summary>
+            Optional external anchor transform. If null, the input field transform is used.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumKeyboardSettings.HasSameValues(SomniumSpace.Bridge.Components.SomniumKeyboardSettings)">
+            <summary>
+            Returns true if every keyboard setting has the same value.
+            </summary>
+            <param name="other">Settings to compare with.</param>
+            <returns>True when all settings match.</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules">
+            <summary>
+            Allows disabling collisions between players globally and defining areas where collisions are allowed.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.DisableCollision">
+            <summary>
+            Gets the current global player collision state.
+            Returns true if collisions between players are disabled.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.Areas">
+            <summary>
+            Gets the list of areas where collisions are allowed
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.SetDisableCollisionState(System.Boolean)">
+            <summary>
+            Sets the global player collision state.
+            </summary>
+            <param name="isDisabled">True to disable player collisions globally.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Adds a new area where custom collision rules apply.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.AddArea(SomniumSpace.Bridge.Components.Area)">
+            <summary>
+            Adds a new area where custom collision rules apply.
+            </summary>
+            <param name="area">Area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Updates an existing area using position and size.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.Area)">
+            <summary>
+            Updates an existing area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes an area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.GetArea(System.Int32)">
+            <summary>
+            Returns the area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player motion references.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerCollisionRules.ApplyCurrentRules">
+            <summary>
+            Applies collision rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules">
+            <summary>
+            Allows disabling Fly Mode for players globally and defining areas where it is allowed.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.DisableFlyMode">
+            <summary>
+            Gets the current global disable 'Fly mode' state.
+            Returns true if Fly Mode is disabled.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.Areas">
+            <summary>
+            Gets the list of areas where Fly Mode is allowed.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.SetDisableFlyModeState(System.Boolean)">
+            <summary>
+            Sets the global Fly Mode state.
+            </summary>
+            <param name="isDisabled">True to disable Fly Mode globally.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Adds a new area where Fly Mode is allowed.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.AddArea(SomniumSpace.Bridge.Components.Area)">
+            <summary>
+            Adds a new area where Fly Mode is allowed.
+            </summary>
+            <param name="area">Area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Updates an existing area using position and size.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.Area)">
+            <summary>
+            Updates an existing area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes an area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.GetArea(System.Int32)">
+            <summary>
+            Returns the area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player motion references.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerFlyRules.ApplyCurrentRules">
+            <summary>
+            Applies Fly Mode rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules">
+            <summary>
+            Allows disabling Gliding for players globally and defining areas where it is allowed.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea">
+            <summary>
+            Defines an area with custom glide speed multiplier.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea.Area">
+            <summary>
+            Area definition.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea.Speed">
+            <summary>
+            Glide speed multiplier applied for players inside this area.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Creates a glide speed area using position and size.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="speed">Glide speed multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea.#ctor(SomniumSpace.Bridge.Components.Area,System.Single)">
+            <summary>
+            Creates a glide speed area from an existing area definition.
+            </summary>
+            <param name="area">Area definition.</param>
+            <param name="speed">Glide speed multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea.Pos">
+            <summary>
+            Gets the area center position.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea.Size">
+            <summary>
+            Gets the area size.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea.Default">
+            <summary>
+            Returns a default glide area with position Vector3.zero, size (10, 10, 10) and standard speed values.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.DisableGlide">
+            <summary>
+            Gets the current global disable glide.
+            Returns true if glide is disabled.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlobalSpeed">
+            <summary>
+            Gets the global glide speed multiplier for players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.Areas">
+            <summary>
+            Gets the list of areas where glide is allowed with custom glide speed.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.SetDisableGlideState(System.Boolean)">
+            <summary>
+            Sets the global glide state.
+            </summary>
+            <param name="isDisabled">True to disable glide globally.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.SetGlobalSpeed(System.Single)">
+            <summary>
+            Sets the global glide speed multiplier for players.
+            </summary>
+            <param name="speed">Glide speed multiplier value (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Adds a new area where glide is allowed with custom speed.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="speed">Glide speed multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.AddArea(SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea)">
+            <summary>
+            Adds a new area where glide is allowed with custom speed.
+            </summary>
+            <param name="area">Area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Single)">
+            <summary>
+            Updates an existing glide area using position and size.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+            <param name="speed">Glide speed multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GlideArea)">
+            <summary>
+            Updates an existing glide area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes an area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.GetArea(System.Int32)">
+            <summary>
+            Returns the area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player motion references.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGlideRules.ApplyCurrentRules">
+            <summary>
+            Applies glide rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules">
+            <summary>
+            Allows configuring gravity globally and defining custom areas with specific gravity values.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea">
+            <summary>
+            Defines an area with custom gravity multipliers.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.Area">
+            <summary>
+            Area definition.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.NonXRGravity">
+            <summary>
+            Gravity multiplier applied for non-XR players inside this area.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.XRGravity">
+            <summary>
+            Gravity multiplier applied for XR players inside this area.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Creates a gravity area using position and size.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRGravity">Gravity multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="XRGravity">Gravity multiplier for XR players (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.#ctor(SomniumSpace.Bridge.Components.Area,System.Single,System.Single)">
+            <summary>
+            Creates a gravity area from an existing area definition.
+            </summary>
+            <param name="area">Area definition.</param>
+            <param name="nonXRGravity">Gravity multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="XRGravity">Gravity multiplier for XR players (clamped between 0 and 10).</param>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.Pos">
+            <summary>
+            Gets the area center position.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.Size">
+            <summary>
+            Gets the area size.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea.Default">
+            <summary>
+            Returns a default gravity area with position Vector3.zero, size (10, 10, 10) and standard gravity values.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GlobalNonXRGravity">
+            <summary>
+            Gets the global gravity multiplier for non-XR players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GlobalXRGravity">
+            <summary>
+            Gets the global gravity multiplier for XR players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.Areas">
+            <summary>
+            Gets the list of areas with custom gravity rules.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.SetGlobalGravity(System.Single)">
+            <summary>
+            Sets the same global gravity multiplier for both XR and non-XR players.
+            </summary>
+            <param name="gravity">Gravity multiplier value (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.SetGlobalNonXRGravity(System.Single)">
+            <summary>
+            Sets the global gravity multiplier for non-XR players.
+            </summary>
+            <param name="nonXRGravity">Gravity multiplier value (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.SetGlobalXRGravity(System.Single)">
+            <summary>
+            Sets the global gravity multiplier for XR players.
+            </summary>
+            <param name="XRGravity">Gravity multiplier value (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Adds a new area with custom gravity values.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRGravity">Gravity multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="XRGravity">Gravity multiplier for XR players (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.AddArea(SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea)">
+            <summary>
+            Adds a new area with custom gravity values.
+            </summary>
+            <param name="area">Gravity area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Updates an existing gravity area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+            <param name="nonXRGravity">New non-XR gravity multiplier (clamped between 0 and 10).</param>
+            <param name="XRGravity">New XR gravity multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GravityArea)">
+            <summary>
+            Updates an existing gravity area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New gravity area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes a gravity area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.GetArea(System.Int32)">
+            <summary>
+            Returns the gravity area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The gravity area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player motion references.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerGravityRules.ApplyCurrentRules">
+            <summary>
+            Applies gravity rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules">
+            <summary>
+            Allows configuring jump force globally and defining custom areas with specific jump force.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea">
+            <summary>
+            Defines an area with custom jump force multipliers.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.Area">
+            <summary>
+            Area definition.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.NonXRJump">
+            <summary>
+            Jump force multiplier applied for non-XR players inside this area.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.XRJump">
+            <summary>
+            Jump force multiplier applied for XR players inside this area.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Creates a jump area using position and size.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRJump">Jump force multiplier for non-XR players (clamped between 0.1 and 10).</param>
+            <param name="XRJump">Jump force multiplier for XR players (clamped between 0.1 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.#ctor(SomniumSpace.Bridge.Components.Area,System.Single,System.Single)">
+            <summary>
+            Creates a jump area from an existing area definition.
+            </summary>
+            <param name="area">Area definition.</param>
+            <param name="nonXRJump">Jump force multiplier for non-XR players (clamped between 0.1 and 10).</param>
+            <param name="XRJump">Jump force multiplier for XR players (clamped between 0.1 and 10).</param>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.Pos">
+            <summary>
+            Gets the area center position.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.Size">
+            <summary>
+            Gets the area size.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea.Default">
+            <summary>
+            Returns a default jump area with position Vector3.zero, size (10, 10, 10) and standard jump values.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.GlobalNonXRJump">
+            <summary>
+            Gets the global jump force multiplier for non-XR players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.GlobalXRJump">
+            <summary>
+            Gets the global jump force multiplier for XR players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.Areas">
+            <summary>
+            Gets the list of areas with custom jump force rules.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.SetGlobalJump(System.Single)">
+            <summary>
+            Sets the same global jump force multiplier for both XR and non-XR players.
+            </summary>
+            <param name="jump">Jump force multiplier value (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.SetGlobalNonXRJump(System.Single)">
+            <summary>
+            Sets the global jump force multiplier for non-XR players.
+            </summary>
+            <param name="nonXRJump">Jump force multiplier value (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.SetGlobalXRJump(System.Single)">
+            <summary>
+            Sets the global jump force multiplier for XR players.
+            </summary>
+            <param name="XRJump">Jump force multiplier value (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Adds a new area with custom jump force values.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRJump">Jump multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="XRJump">Jump multiplier for XR players (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.AddArea(SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea)">
+            <summary>
+            Adds a new area with custom jump force values.
+            </summary>
+            <param name="area">Jump area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Updates an existing jump area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+            <param name="nonXRJump">New non-XR jump multiplier (clamped between 0 and 10).</param>
+            <param name="XRJump">New XR jump multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.JumpArea)">
+            <summary>
+            Updates an existing jump area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New jump area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes a jump area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.GetArea(System.Int32)">
+            <summary>
+            Returns the jump area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The jump area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player motion references.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerJumpRules.ApplyCurrentRules">
+            <summary>
+            Applies jump force rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.IArea">
+            <summary>
+            Interface describing an area.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.IArea.Pos">
+            <summary>
+            Area position
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.IArea.Size">
+            <summary>
+            Area size
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.Area">
+            <summary>
+            Base structure representing an area that can be used to define custom settings.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.Area.Pos">
+            <summary>
+            Area position
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.Area.Size">
+            <summary>
+            Area size
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.Area.#ctor(UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Creates an area with the specified position and size.
+            </summary>
+            <param name="pos">Area position</param>
+            <param name="size">Area size</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.Area.Default">
+            <summary>
+            Returns the default area with position Vector3.zero and size (10, 10, 10).
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.Area.ClampSize(UnityEngine.Vector3)">
+            <summary>
+            Clamps the area size so that it is not smaller than Vector3.one.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1">
+            <summary>
+            Base class for player behavior rules.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1._container">
+            <summary>
+            Somnium players container.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1._localPlayer">
+            <summary>
+            Current local player.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1._body">
+            <summary>
+            Current local player body references.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1._hasAppliedRules">
+            <summary>
+            Whether this rule component has applied its current rules to the local player.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1.ClampValue(System.Single)">
+            <summary>
+            Clamps a multiplier value between 0f and 10f, representing 0% to 1000% of the original value (1f).
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects common local player references.
+            </summary>
+            <param name="somniumPlayer">Local player.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1.ApplyCurrentRules">
+            <summary>
+            Applies rules depending on the user's settings.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerRulesBase`1.IsPointInArea(UnityEngine.Vector3,SomniumSpace.Bridge.Components.IArea)">
+            <summary>
+            Returns true if the specified point is inside the area.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules">
+            <summary>
+            Allows configuring movement speed globally and defining custom areas with specific movement speed values.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea">
+            <summary>
+            Defines an area with custom movement speed multipliers.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.Area">
+            <summary>
+            Area definition.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.NonXRSpeed">
+            <summary>
+            Movement speed multiplier applied for non-XR players inside this area.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.LocomotionSpeed">
+            <summary>
+            Movement speed multiplier applied for XR locomotion inside this area.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.NonXRSprintSpeed">
+            <summary>
+            Sprint speed multiplier applied for non-XR players inside this area.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a movement speed area.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRSpeed">Movement speed multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">Movement speed multiplier for XR locomotion (clamped between 0 and 10).</param>
+            <param name="nonXRSprintSpeed">Sprint speed multiplier for non-XR players (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Creates a movement speed area (LEGACY).
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRSpeed">Movement speed multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">Movement speed multiplier for XR locomotion (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.#ctor(SomniumSpace.Bridge.Components.Area,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a movement speed area from an existing area definition.
+            </summary>
+            <param name="area">Area definition.</param>
+            <param name="nonXRSpeed">Movement speed multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">Movement speed multiplier for XR locomotion (clamped between 0 and 10).</param>
+            <param name="nonXRSprintSpeed">Sprint speed multiplier for non-XR players (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.#ctor(SomniumSpace.Bridge.Components.Area,System.Single,System.Single)">
+            <summary>
+            Creates a movement speed area from an existing area definition (LEGACY API).
+            </summary>
+            <param name="area">Area definition.</param>
+            <param name="nonXRSpeed">Movement speed multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">Movement speed multiplier for XR locomotion (clamped between 0 and 10).</param>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.Pos">
+            <summary>
+            Gets the area center position.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.Size">
+            <summary>
+            Gets the area size.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea.Default">
+            <summary>
+            Returns a default movement speed area.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.GlobalNonXRSpeed">
+            <summary>
+            Gets the global movement speed multiplier for non-XR players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.GlobalLocomotionSpeed">
+            <summary>
+            Gets the global movement speed multiplier for XR locomotion.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.GlobalNonXRSprintSpeed">
+            <summary>
+            Gets the global run speed multiplier for non-XR players.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.Areas">
+            <summary>
+            Gets the list of areas with custom movement speed rules.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.SetGlobalSpeed(System.Single)">
+            <summary>
+            Sets the global movement speed multipliers.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.SetGlobalNonXRSpeed(System.Single)">
+            <summary>
+            Sets the global movement speed multiplier for non-XR players.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.SetGlobalLocomotionSpeed(System.Single)">
+            <summary>
+            Sets the global movement speed multiplier for XR locomotion.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.SetGlobalNonXRSprintSpeed(System.Single)">
+            <summary>
+            Sets the global sprint speed multiplier for non-XR players.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single,System.Single)">
+            <summary>
+            Adds a new area with custom movement speed values.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRSpeed">Movement speed multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">Movement speed multiplier for XR locomotion (clamped between 0 and 10).</param>
+            <param name="nonXRSprintSpeed">Sprint speed multiplier for non-XR players (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Adds a new area with custom movement speed values (LEGACY API).
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="nonXRSpeed">Movement speed multiplier for non-XR players (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">Movement speed multiplier for XR locomotion (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.AddArea(SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea)">
+            <summary>
+            Adds a new area with custom movement speed values.
+            </summary>
+            <param name="area">Movement speed area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single,System.Single)">
+            <summary>
+            Updates an existing movement speed area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+            <param name="nonXRSpeed">New non-XR speed multiplier (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">New XR locomotion speed multiplier (clamped between 0 and 10).</param>
+            <param name="nonXRSprintSpeed">New non-XR sprint speed multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single)">
+            <summary>
+            Updates an existing movement speed area (LEGACY API).
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+            <param name="nonXRSpeed">New non-XR speed multiplier (clamped between 0 and 10).</param>
+            <param name="locomotionSpeed">New XR locomotion speed multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.MovementSpeedArea)">
+            <summary>
+            Updates an existing movement speed area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New movement speed area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes a movement speed area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.GetArea(System.Int32)">
+            <summary>
+            Returns the movement speed area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The movement speed area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player motion references.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerMovementSpeedRules.ApplyCurrentRules">
+            <summary>
+            Applies movement speed rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules">
+            <summary>
+            Allows configuring teleportation settings speed globally and defining custom areas with specific teleportation settings.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea">
+            <summary>
+            Defines an area with custom teleportation settings.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.Area">
+            <summary>
+            Area definition.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.Distance">
+            <summary>
+            Teleportation distance multiplier applied inside this area.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.Cooldown">
+            <summary>
+            Teleportation cooldown multiplier applied inside this area.
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.RayGradient">
+            <summary>
+            Teleportation ray visual gradient applied inside this area.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.#ctor(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single,UnityEngine.Gradient)">
+            <summary>
+            Creates a teleportation area using position and size.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="distance">Teleportation distance multiplier (clamped between 0 and 10).</param>
+            <param name="cooldown">Teleportation cooldown multiplier (clamped between 0 and 10).</param>
+            <param name="rayGradient">Teleportation ray gradient.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.#ctor(SomniumSpace.Bridge.Components.Area,System.Single,System.Single,UnityEngine.Gradient)">
+            <summary>
+            Creates a teleportation area from an existing area definition.
+            </summary>
+            <param name="area">Area definition.</param>
+            <param name="distance">Teleportation distance multiplier (clamped between 0 and 10).</param>
+            <param name="cooldown">Teleportation cooldown multiplier (clamped between 0 and 10).</param>
+            <param name="rayGradient">Teleportation ray gradient.</param>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.Pos">
+            <summary>
+            Gets the area center position.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.Size">
+            <summary>
+            Gets the area size.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea.Default">
+            <summary>
+            Returns a default teleportation area with position Vector3.zero, size (10, 10, 10) and standard teleportation settings.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.DisableTeleportation">
+            <summary>
+            Gets the current global teleportation state.
+            Returns true if teleportation is disabled.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.GlobalDistance">
+            <summary>
+            Gets the global teleportation distance multiplier.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.GlobalCooldown">
+            <summary>
+            Gets the global teleportation cooldown multiplier.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.GlobalRayGradient">
+            <summary>
+            Gets the global teleportation ray gradient.
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.Areas">
+            <summary>
+            Gets the list of areas with custom teleportation settings.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.SetDisableTeleportationState(System.Boolean)">
+            <summary>
+            Sets the global teleportation state.
+            </summary>
+            <param name="isDisabled">True to disable teleportation globally.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.SetGlobalDistance(System.Single)">
+            <summary>
+            Sets the global teleportation distance multiplier.
+            </summary>
+            <param name="distance">Teleportation distance multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.SetGlobalCooldown(System.Single)">
+            <summary>
+            Sets the global teleportation cooldown multiplier.
+            </summary>
+            <param name="cooldown">Teleportation cooldown multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.SetGlobalRayGradient(UnityEngine.Gradient)">
+            <summary>
+            Sets the global teleportation ray gradient.
+            </summary>
+            <param name="rayGradient">Teleportation ray gradient.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.AddArea(UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single,UnityEngine.Gradient)">
+            <summary>
+            Adds a new area with custom teleportation settings.
+            </summary>
+            <param name="pos">Area center position.</param>
+            <param name="size">Area size.</param>
+            <param name="distance">Teleportation distance multiplier (clamped between 0 and 10).</param>
+            <param name="cooldown">Teleportation cooldown multiplier (clamped between 0 and 10).</param>
+            <param name="rayGradient">Teleportation ray gradient.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.AddArea(SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea)">
+            <summary>
+            Adds a new area with custom teleportation settings.
+            </summary>
+            <param name="area">Teleportation area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.UpdateArea(System.Int32,UnityEngine.Vector3,UnityEngine.Vector3,System.Single,System.Single,UnityEngine.Gradient)">
+            <summary>
+            Updates an existing teleportation area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="pos">New area position.</param>
+            <param name="size">New area size.</param>
+            <param name="distance">New teleportation distance multiplier (clamped between 0 and 10).</param>
+            <param name="cooldown">New teleportation cooldown multiplier (clamped between 0 and 10).</param>
+            <param name="rayGradient">New teleportation ray gradient.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.UpdateArea(System.Int32,SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.TeleportationArea)">
+            <summary>
+            Updates an existing teleportation area.
+            </summary>
+            <param name="areaIndex">Index of the area to update.</param>
+            <param name="area">New teleportation area definition.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.RemoveArea(System.Int32)">
+            <summary>
+            Removes a teleportation area by index.
+            </summary>
+            <param name="areaIndex">Index of the area to remove.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.ClearAllAreas">
+            <summary>
+            Removes all configured areas.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.GetArea(System.Int32)">
+            <summary>
+            Returns the teleportation area at the specified index.
+            </summary>
+            <param name="areaIndex">Index of the area.</param>
+            <returns>The teleportation area if the index is valid; otherwise the default value.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.DefaultRayGradient">
+            <summary>
+            Default ray gradient for teleportation, same as in VR client
+            </summary>
+            <returns>Default ray gradient for teleportatio</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.OnLocalPlayerAdded(SomniumSpace.Bridge.Player.ISomniumPlayer)">
+            <summary>
+            Collects local player motion references.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumPlayerTeleportationRules.ApplyCurrentRules">
+            <summary>
+            Applies teleportation rules based on global settings and defined areas.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumTriggerAction">
+            <summary>
+            Component that responsible for handling Triggers including Somnium Space Player 
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerAction.OnTrigerEnterEvents">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerAction.OnTrigerStayEvents">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerAction.OnTrigerExitEvents">
+            <summary></summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs">
+            <summary>
+            Struct that contains <see cref="T:SomniumSpace.Bridge.Components.SomniumTriggerActionUnityEvent">Trigger Event</see> properties 
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.#ctor(UnityEngine.GameObject)">
+            <summary></summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.Layer">
+            <summary>
+            Trigger object layer
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.IsName(System.String)">
+            <summary>
+            Confirm that trigger object's name is identical to name
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.IsTag(System.String)">
+            <summary>
+            Confirm that trigger object's tag is identical to tag
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.IsPlayer">
+            <summary>
+            Verify if trigger's object is Somnium Space player
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.IsLocal">
+            <summary>
+            Verify if Somnium Space player activating the trigger is local. If trigger object is not Somnium Space player, return false
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.Player">
+            <summary>
+            Information about Somnium Space player who activated trigger 
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.Trigger">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.GetComponent``1">
+            <summary>
+            Get component from trigger object
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.GetComponentInChildren``1">
+            <summary>
+            Get component from trigger object
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerActionArgs.GetComponentInParent``1">
+            <summary>
+            Get component from trigger object
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumTriggerActionUnityEvent">
+            <summary>
+            Somnium Space Trigger Action event
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumTriggerEvent">
+            <summary>
+            <see cref="T:SomniumSpace.Bridge.Components.SomniumTriggerActionUnityEvent">Trigger Event</see> handler
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEvent.Event">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEvent.LayerCondition">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEvent.IsMyCheck">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEvent.IsSelected">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEvent.IsPlayerCheck">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEvent.IsHaveLayerCondition">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEvent.Invoke(SomniumSpace.Bridge.Components.SomniumTriggerActionArgs)">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEvent.IsHaveListeners">
+            <summary></summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer">
+            <summary>
+            Events container for <see cref="T:SomniumSpace.Bridge.Components.SomniumTriggerAction">Somnium Space Trigger Action</see>
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.#ctor">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.Events">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.IsEmpty">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.IsHaveListeners">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.SendEvent(SomniumSpace.Bridge.Components.SomniumTriggerActionArgs)">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.IsOpen">
+            <summary></summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.SelectedId">
+            <summary></summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.IsHaveSelected">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.AddEvent">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.DeselectAll">
+            <summary></summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Components.SomniumTriggerEventContainer.RemoveSelectedEvent">
+            <summary></summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Environment.ISomniumEnvironment">
+            <summary>
+            Allows to set up Somnium Space environment
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Environment.ISomniumEnvironment.SetSkybox(UnityEngine.Material)">
+            <summary>
+            Set skybox in rendering settings
+            </summary>
+            <param name="skybox">New skybox material</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Environment.ISomniumEnvironment.SetSunSource(UnityEngine.Light)">
+            <summary>
+            Set sun source in rendering settings
+            </summary>
+            <param name="light">New directional light</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Environment.ISomniumEnvironment.SetAmbientModeSkybox(System.Single)">
+            <summary>
+            Set ambient mode Skybox in rendering settings
+            </summary>
+            <param name="intensity">Intensity Multiplier - 0..8</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Environment.ISomniumEnvironment.SetAmbientModeGradient(UnityEngine.Color,UnityEngine.Color,UnityEngine.Color)">
+            <summary>
+            Set ambient mode Gradient in rendering settings
+            </summary>
+            <param name="skyColor">Sky Color</param>
+            <param name="equatorColor">Equator Color</param>
+            <param name="groundColor">Ground Color</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Environment.ISomniumEnvironment.SetAmbientModeColor(UnityEngine.Color)">
+            <summary>
+            Set ambient mode Color in rendering settings
+            </summary>
+            <param name="lightColor">Ambient Color</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Environment.ISomniumEnvironment.UpdateEnvironment">
+            <summary>
+            Apply all changes in rendering settings
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage">
+            <summary>
+            Allows to use Somnium Space worlds local storage
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.ReadText(System.String,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.WriteText(System.String,System.String,System.Boolean)" -->
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.DeleteText(System.String)">
+            <summary>
+            Deletes a specific .txt file from local storage.
+            </summary>
+            <param name="fileName">Name of the file without extension.</param>
+            <returns>True if the file was successfully deleted.</returns>
+        </member>
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.TextExists(System.String)">
+            <summary>
+            Checks if a specific .txt file exists.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.GetAllTextNames">
+            <summary>
+            Returns a list of all .txt files available for this world.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.ReadJson``1(System.String,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.WriteJson(System.String,System.Object,System.Boolean)" -->
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.DeleteJson(System.String)">
+            <summary>
+            Deletes a specific .json file from local storage.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.JsonExists(System.String)">
+            <summary>
+            Checks if a specific .json file exists.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.GetAllJsonNames">
+            <summary>
+            Returns a list of all .json files available for this world.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.GetUsedSpaceBytes">
+            <summary>
+            Returns the total size in bytes used by this world's cache folder.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage.ClearAllData">
+            <summary>
+            Wipes all files (Text and JSON) in the world's cache folder.
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerAnimation">
+            <summary>
+            Contains access to Somnium Space player animation feature.
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerAnimation.SetFallingAnimationDisabled(System.Boolean)">
+            <summary>
+            Disables the NonXR falling animation while keeping real movement and grounded state unchanged.
+            </summary>
+            <param name="isDisabled">If true, the NonXR falling animation will be blocked.</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerAvatar">
+            <summary>
+            Contains access to Somnium Space player Avatar feature
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.Components.ISomniumPlayerAvatar.OnAvatarChanged">
+            <summary>
+            Avatar changed
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerAvatar.SetVRIKLegMovementDisabled(System.Boolean)">
+            <summary>
+            Disables lower-body VRIK behavior for this player avatar.
+            </summary>
+            <param name="isDisabled">If true, lower-body VRIK and grounder behavior will be disabled.</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerPoses">
+            <summary>
+            Contains access to Somnium Space player Poses feature
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerPoses.SetPose(SomniumSpace.Bridge.Player.Components.PoseType)">
+            <summary>
+            Apply pose to avatar
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerWearable">
+            <summary>
+            Contains access to Somnium Space player Wearable feature
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.Components.ISomniumPlayerWearable.OnOutfitPutOn">
+            <summary>
+            Outfit applied to avatar
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.Components.ISomniumPlayerWearable.OnOutfitTakeOff">
+            <summary>
+            Outfit removed from avatar
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerScale">
+            <summary>
+            Contains access to Somnium Space player Scale feature
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerScale.SetHeight(System.Single,System.Single)">
+            <summary>
+            Set avatar height for player (player scale)
+            </summary>
+            <param name="nonXRHeight">Avatar height for non XR players (clamped between 0.6 and 5). Not supported for now.</param>
+            <param name="XRHeight">Avatar height for XR players (clamped between 0.6 and 5).</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerBody">
+            <summary>
+            Contains access to Somnium Space player body
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerBody.Root">
+            <summary>
+            Player's root
+            </summary>
+            <returns>Root transform: position, rotation, scale</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerBody.Head">
+            <summary>
+            Player's head
+            </summary>
+            <returns>Head transform: position, rotation, scale</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerBody.Neck">
+            <summary>
+            Player's neck
+            </summary>
+            <returns>Neck transform: position, rotation, scale</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerBody.LeftHand">
+            <summary>
+            Player's left hand
+            </summary>
+            <returns>LeftHand transform: position, rotation, scale</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerBody.RightHand">
+            <summary>
+            Player's right hand
+            </summary>
+            <returns>RightHand transform: position, rotation, scale</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures">
+            <summary>
+            Contains access to Somnium Space player features: motion, voice
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Motion">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion">Somnium Space player motion feature</see>
+            </summary>
+            <returns>Access to player's motion feature</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Voice">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerVoice">Somnium Space player voice feature</see>
+            </summary>
+            <returns>Access to player's voice feature</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Scale">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerScale">Somnium Space player scale feature</see>
+            </summary>
+            <returns>Access to player's scale feature</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Avatar">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerInfo">Somnium Space player avatar feature</see>
+            </summary>
+            <returns>Access to player's avatar feature</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Wearable">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerInfo">Somnium Space player wearable feature</see>
+            </summary>
+            <returns>Access to player's wearable feature</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Poses">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerInfo">Somnium Space player poses feature</see>
+            </summary>
+            <returns>Access to player's poses feature</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Animation">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerAnimation">Somnium Space player animation feature</see>
+            </summary>
+            <returns>Access to player's animation feature</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures.Info">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerInfo">Somnium Space player info feature</see>
+            </summary>
+            <returns>Access to player's info feature</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion">
+            <summary>
+            Contains access to Somnium Space player motion feature
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.DoTeleportToPoint(UnityEngine.Vector3,UnityEngine.Vector3,System.Action)">
+            <summary>
+            Teleport player to point
+            </summary>
+            <param name="position">Teleport position</param>
+            <param name="rotation">Teleport direction</param>
+            <param name="done">Callback triggers when Teleport done</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetMovementSpeed(System.Single,System.Single,System.Single)">
+            <summary>
+            Set movement speed for player
+            </summary>
+            <param name="nonXRSpeed">Player non XR speed multiplier (clamped between 0 and 10)</param>
+            <param name="locomotionSpeed">Player locomotion speed multiplier (clamped between 0 and 10)</param>
+            <param name="nonXRSprintSpeed">Player non XR sprint speed multiplier (clamped between 0 and 10).</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetGlideSpeed(System.Single)">
+            <summary>
+            Set glide speed settings for player
+            </summary>
+            <param name="speed">Player speed during gliding multiplier (clamped between 0 and 10)</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetGravity(System.Single,System.Single)">
+            <summary>
+            Set gravity settings for player
+            </summary>
+            <param name="nonXRGravity">Player non XR gravity multiplier (clamped between 0 and 10)</param>
+            <param name="XRGravity">Player XR gravity multiplier (clamped between 0 and 10)</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetJump(System.Single,System.Single)">
+            <summary>
+            Set jump settings for player
+            </summary>
+            <param name="nonXRJump">Player non XR jump multiplier (clamped between 0 and 10)</param>
+            <param name="XRJump">Player XR jump multiplier (clamped between 0 and 10)</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetTeleportation(System.Single,System.Single,UnityEngine.Gradient)">
+            <summary>
+            Set teleportation settings for player
+            </summary>
+            <param name="distance">Teleportation distance multiplier (clamped between 0 and 10).</param>
+            <param name="cooldown">Teleportation cooldown multiplier (clamped between 0 and 10).</param>
+            <param name="rayGradient">Teleportation ray gradient.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetTeleportationDisableState(System.Boolean)">
+            <summary>
+            Sets the teleportation state.
+            </summary>
+            <param name="isDisabled">True to disable teleportation.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetCollisionDisableState(System.Boolean)">
+            <summary>
+            Sets the player collision state.
+            </summary>
+            <param name="isDisabled">True to disable player collisions.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetFlyModeDisableState(System.Boolean)">
+            <summary>
+            Sets the Fly Mode state.
+            </summary>
+            <param name="isDisabled">True to disable Fly Mode.</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerMotion.SetGlideDisableState(System.Boolean)">
+            <summary>
+            Sets the glide state.
+            </summary>
+            <param name="isDisabled">True to disable glide.</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerProperties">
+            <summary>
+            Contains information about Somnium Space player: ID, Nickname, IsLocal
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerProperties.NickName">
+            <summary>
+            Player's nickname
+            </summary>
+            <returns>Nickname specified during player registration</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerProperties.Id">
+            <summary>
+            Player's ID
+            </summary>
+            <returns>ID in format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerProperties.PhotonId">
+            <summary>
+            Player's photon ID
+            </summary>
+            <returns> photon ID</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerProperties.IsLocal">
+            <summary>
+            Check if Player is local or remote
+            </summary>
+            <returns>True if player is Local</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerReferences">
+            <summary>
+            Contains access to Somnium Space player parts: body
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.Components.ISomniumPlayerReferences.Body">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerBody">Somnium Space player body</see>
+            </summary>
+            <returns>Access to player's body: Root</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerVoice">
+            <summary>
+            Contains access to Somnium Space player voice feature
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerVoice.EnableAmplify(System.Single)">
+            <summary>
+            Amplify player's voice with effect
+            </summary>
+            <param name="distance">Effect distance</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerVoice.DisableAmplify">
+            <summary>
+            Disable player's voice amplify effect 
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerVoice.SetVoiceLevel(System.Single)">
+            <summary>
+            Set player's voice level
+            </summary>
+            <param name="level">0..1</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerInfo">
+            <summary>
+            Contains access to Somnium Space player info feature
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.Components.ISomniumPlayerInfo.SetPlayerTagDisableState(System.Boolean)">
+            <summary>
+            Set disabling state for Player tag of other players
+            </summary>
+            <param name="isDisabled">True to disable Player tag.</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.ISomniumPlayer">
+            <summary>
+            Contains information about Somnium Space player and allows access to its properties, parts and features
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.ISomniumPlayer.Properties">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerProperties">Somnium Space player properties</see>
+            </summary>
+            <returns>Access to player's info: ID, Nickname, IsLocal</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.ISomniumPlayer.References">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerReferences">Somnium Space player references</see> 
+            </summary>
+            <returns>Access to player's parts: body parts, etc</returns>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.ISomniumPlayer.Features">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.Components.ISomniumPlayerFeatures">Somnium Space player features</see> 
+            </summary>
+            <returns>Access to player's features: motion, voice, etc</returns>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.ISomniumPlayersContainer">
+            <summary>
+            Contains information about Somnium Space players that are connected to current game session
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnLocalPlayerAdded">
+            <summary>
+            Event triggers when local <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> was joined to game session and components are already initialized
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnPlayerAdded">
+            <summary>
+            Event triggers when <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> was joined to game session and components are already initialized
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnPlayerRemoved">
+            <summary>
+            Event triggers when <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> was leaved game session
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnPlayerAvatarChanged">
+            <summary>
+            Event triggers when <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> changed avatar
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnPlayerOutfitPutOn">
+            <summary>
+            Event triggers when <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> applied outfit to avatar
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.OnPlayerOutfitTakeOff">
+            <summary>
+            Event triggers when <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> removed outfit from avatar
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.AllPlayers">
+            <summary>
+            List of all <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space players</see> in game session
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.PlayersCount">
+            <summary>
+            Count of <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space players</see> in game session
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.LocalPlayer">
+            <summary>
+            Local <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see>
+            </summary>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.GetPlayerByID(System.String)">
+            <summary>
+            <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> with specified ID
+            </summary>
+            <param name="userId">Public user ID</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.GetPlayerByPhotonID(System.Int32)">
+            <summary>
+            <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> with specified ID
+            </summary>
+            <param name="photonId">Public user photon ID</param>
+        </member>
+        <member name="M:SomniumSpace.Bridge.Player.ISomniumPlayersContainer.GetPlayerByNickName(System.String)">
+            <summary>
+            <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayer">Somnium Space player</see> with specified Nickname
+            </summary>
+            <param name="nickName">Public user Nickname</param>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Player.ISomniumPlayerTrigger">
+            <summary>
+            Interface for access to Somnium Space Player trigger
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Player.ISomniumPlayerTrigger.Player">
+            <summary>
+            Somnium Space player that is interacting with trigger
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Network.ConnectionStatus">
+            <summary>
+            Server connection status
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Network.ConnectionStatus.INITIALIZATION">
+            <summary>
+            Initialization process
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Network.ConnectionStatus.DISCONNECTED">
+            <summary>
+            Disconnect happened
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Network.ConnectionStatus.CONNECTING">
+            <summary>
+            In connection process
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Network.ConnectionStatus.CONNECTED">
+            <summary>
+            Connect happened
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Network.ConnectionStatus.FAILED">
+            <summary>
+            Connection failed
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Network.ConnectionStatus.ENTERING_LOBBY">
+            <summary>
+            Entering lobby
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.Network.ConnectionStatus.IN_LOBBY">
+            <summary>
+            In lobby
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.Network.ISomniumNetwork">
+            <summary>
+            Contains information about current Somnium Space network session
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnConnected">
+            <summary>
+            Event triggers when the current player is connected to the server.
+            If there is no internet connection this event will not be triggered
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnDisconnected">
+            <summary>
+            Event triggers when the current player is disconnected from the server.
+            This event can be triggered when internet connection was lost but player still stay in world
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnJoinedToGameSession">
+            <summary>
+            Event triggers when the current player is joined to a game session.
+            This event will be triggered after current player was connected to server
+            </summary>
+        </member>
+        <member name="E:SomniumSpace.Bridge.Network.ISomniumNetwork.OnLeaveFromGameSession">
+            <summary>
+            Event triggers when the current player has left the game session.
+            This event will be triggered only if current player was already connected to server and joined to game session
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Network.ISomniumNetwork.IsConnected">
+            <summary>
+            Check if current player is connected to network
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Network.ISomniumNetwork.Status">
+            <summary>
+            Current network <see cref="T:SomniumSpace.Bridge.Network.ConnectionStatus">connection status</see>
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.Network.ISomniumNetwork.IsHost">
+            <summary>
+            Check if current player is network host
+            </summary>
+        </member>
+        <member name="T:SomniumSpace.Bridge.SomniumBridge">
+            <summary>
+            System that allows to connect to Somnium Space components
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.SomniumBridge.HasInstance">
+            <summary>
+            Returns true if instance exists
+            </summary>
+        </member>
+        <member name="F:SomniumSpace.Bridge.SomniumBridge._instance">
+            <summary>
+            Somnium Space Bridge instance
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.SomniumBridge.PlayersContainer">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Player.ISomniumPlayersContainer">Somnium Space players container</see>
+            </summary>
+            <returns>Access to players container</returns>
+        </member>
+        <member name="F:SomniumSpace.Bridge.SomniumBridge._container">
+            <summary>
+            Somnium Space players container instance
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.SomniumBridge.Network">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Network.ISomniumNetwork">Somnium Space Network session</see>
+            </summary>
+            <returns>Access to network</returns>
+        </member>
+        <member name="F:SomniumSpace.Bridge.SomniumBridge._network">
+            <summary>
+            Somnium Space network instance
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.SomniumBridge.Environment">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.Environment.ISomniumEnvironment">Somnium Space environment settings</see>
+            </summary>
+            <returns>Access to environment</returns>
+        </member>
+        <member name="F:SomniumSpace.Bridge.SomniumBridge._environment">
+            <summary>
+            Somnium Space environment instance
+            </summary>
+        </member>
+        <member name="P:SomniumSpace.Bridge.SomniumBridge.LocalStorage">
+            <summary>
+            Instance of <see cref="T:SomniumSpace.Bridge.LocalStorage.ISomniumWorldsLocalStorage">Somnium Space local storage</see>
+            </summary>
+            <returns>Access to worlds local storage</returns>
+        </member>
+        <member name="F:SomniumSpace.Bridge.SomniumBridge._localStorage">
+            <summary>
+            Somnium Space LocalStorage instance
+            </summary>
+        </member>
+    </members>
+</doc>

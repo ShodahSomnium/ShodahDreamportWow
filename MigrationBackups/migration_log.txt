@@ -1,0 +1,24 @@
+2026-10-21 12:02:59  INFO  [Unattended] Started: task Full, timeout 90 min.
+2026-10-21 12:03:03  INFO  Analysis saved: asmdef '' at , namespace '', Community Modules 3.1, Fusion 2.0.12 Stable 1861
+2026-10-21 12:03:03  INFO  [Unattended] Step 1 warning: Community Modules was found in Assets/#User/Community Modules but without its assembly definition: its scripts compile in Assembly-CSharp. Community Modules 4.0 brings its own assembly definition (CommunityModules). Your scripts inside the Community Modules folder become part of it: if they use scripts outside that folder, move them out after the update.
+2026-10-21 12:03:03  INFO  [Unattended] Step 1 done: Community Modules 3.1, assembly '', Fusion 2.0.12 Stable 1861.
+2026-10-21 12:03:08  INFO  Backup 'Old Community Modules scripts' created: 37 files, 40 KB (20261021-120308_step2)
+2026-10-21 12:03:08  INFO  Step 2 done (Smart): 13 deleted, 3 parked, 0 retired scripts kept.
+2026-10-21 12:03:15  INFO  Backup 'Old Photon' created: 353 files, 3.1 MB (20261021-120313_step3)
+2026-10-21 12:03:15  INFO  Step 3 done: deleted 2 Photon folders/files, kept 2 settings files, moved 0 unknown files, removed 0 UPM packages.
+2026-10-21 12:03:22  INFO  Backup 'Before Photon 2.1 import' created: 7 files, 3 KB (20261021-120322_step4)
+2026-10-21 12:03:22  INFO  Fusion 2.1 scripting defines applied on 17 build targets.
+2026-10-21 12:03:22  INFO  Importing Assets/Somnium Migration Tool/Packages/Somnium Photon Fusion 2.1.3.unitypackage
+2026-10-21 12:03:39  INFO  Package imported: Somnium Photon Fusion 2.1.3
+2026-10-21 12:03:39  INFO  Step 4 done: Photon Fusion 2.1.3 Stable 2390 installed.
+2026-10-21 12:03:40  INFO  Backup 'Before Community Modules 4.0 import' created: 5 files, 2 KB (20261021-120340_step5)
+2026-10-21 12:03:40  INFO  Importing Assets/Somnium Migration Tool/Packages/CommunityModules V4.0.unitypackage
+2026-10-21 12:04:17  INFO  Package imported: CommunityModules V4.0
+2026-10-21 12:04:17  INFO  No previous assembly definition to restore: 'CommunityModules.asmdef' keeps its default name and namespace.
+2026-10-21 12:04:18  INFO  Fixed asmdef references in Assets/#User/Community Modules/Plugins/SomniumSpace/Networking/SomniumSpace.Network.asmdef: removed PhotonVoice.API, removed PhotonVoice, removed PhotonVoice.Fusion
+2026-10-21 12:04:18  INFO  Step 5 done: Community Modules 4.0 imported.
+2026-10-21 12:04:36  INFO  Backup 'Recommended NetworkTransform settings' created: 16 files, 629 KB (20261021-120436_step6)
+2026-10-21 12:04:36  INFO  Recommended settings applied to 0 NetworkTransform component(s) in 7 file(s).
+2026-10-21 12:04:37  INFO  Fusion prefab table rebuilt.
+2026-10-21 12:04:37  INFO  [Unattended] Step 6 done: 0 NetworkRigidbody3D converted, recommended settings applied to 0 NetworkTransform(s), Fusion prefab table rebuilt.
+2026-10-21 12:04:42  INFO  UNATTENDED RESULT: SUCCESS (exit code 0, task Full). Task Full done: 0 compile errors, 15 NetworkTransform(s) checked, 0 converted, 3 of your scripts set aside and put back, 0 missing scripts.

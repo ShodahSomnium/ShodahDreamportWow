@@ -1,0 +1,27 @@
+{
+    "name": "SomniumSpace.Network",
+    "rootNamespace": "SomniumSpace.Network",
+    "references": [
+        "SomniumSpace.Attribute",
+        "SomniumSpace.Arguments",
+        "SomniumSpace.Network.RPC",
+        "Unity.TextMeshPro",
+        "Photon.Realtime",
+        "UniTask",
+        "Enviro3.Runtime",
+        "SomniumSpace.Settings",
+        "SomniumSpace.Audio",
+        "Fusion.Unity",
+        "SomniumSpace.Utilities",
+        "SomniumSpace.Network.SignalR"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
